@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * CPSC 233 W22 Demo 2
+ * CPSC 233 W22 Demo 3
  * Tutorial: T10
- * Date: March 23, 2022
+ * Date: April 01, 2022
  * Gaurav Ashar, Riyad Abdullayev
  * This standalone class deals with loading from and saving to file, and does not represent any
  * sort of object

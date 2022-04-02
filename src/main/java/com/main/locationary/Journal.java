@@ -3,9 +3,9 @@ package com.main.locationary;
 import java.util.ArrayList;
 
 /**
- * CPSC 233 W22 Demo 2
+ * CPSC 233 W22 Demo 3
  * Tutorial: T10
- * Date: March 23, 2022
+ * Date: April 01, 2022
  * Gaurav Ashar, Riyad Abdullayev
  * This class sets the framework for information handlers such as BucketList and Visited objects.
  * */

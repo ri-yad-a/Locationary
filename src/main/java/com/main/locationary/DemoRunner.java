@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * CPSC 233 W22 Demo 2
+ * CPSC 233 W22 Demo 3
  * Tutorial: T10
- * Date: March 23, 2022
+ * Date: April 01, 2022
  * Gaurav Ashar, Riyad Abdullayev
  * This class outputs information to the user using System.out and
  * takes input from the user via System.in. The program represents the
