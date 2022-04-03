@@ -58,7 +58,8 @@ public class VisitedController {
     }
 
     @FXML
-    void addLocationButtonClicked(ActionEvent event) {
+    void addLocationButtonClicked() {
+
 
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
@@ -84,14 +85,23 @@ public class VisitedController {
             Location visitedLocation = null;
             if (canCreate) {
                 visitedLocation = new Location(scope, locationName);
-                // add location to bucketList
-                visited.addLocation(visitedLocation);
+                // add location to visited
+                boolean exists = false;
+                for (Location location: visited.getLocations()) {
+                    if (location.equals(location)) {
+                        exists = true;
+                        statusLabel.setText("Location already exists in visted");
+                    }
+                }
+                if (!exists) {
+                    visited.addLocation(visitedLocation);
+                }
             }
 
             // if POI text field is not empty then add POI
             if (!poiInput.equals("") && visitedLocation != null) {
                 POI poi = new POI(poiInput);
-                String ratingStr = ratingTextField.getText();
+                /*String ratingStr = ratingTextField.getText();
                 if (!ratingStr.equals("")) {
                     try {
                         double rating = Double.parseDouble(ratingStr);
@@ -99,8 +109,11 @@ public class VisitedController {
                     } catch (NumberFormatException e) {
                         statusLabel.setText("Please enter a value between 1 and 5 for location rating");
                     }
-                }
+                }*/
                 // add poi to the location
+
+
+
                 visitedLocation.addPOI(poi);
             }
 
@@ -113,7 +126,7 @@ public class VisitedController {
     }
 
     @FXML
-    void locationaryButtonClicked(ActionEvent event) {
+    void locationaryButtonClicked() {
         Main.switchScreen("home-view.fxml");
     }
 
@@ -141,13 +154,17 @@ public class VisitedController {
     }
 
     @FXML
-    void viewLocationInformationClicked(ActionEvent event) {
+    void viewLocationInformationClicked() {
+
         Location location = visitedListView.getSelectionModel().getSelectedItem();
-        viewLocationAttributesTextArea.setText(location.toVerboseString());
+        if (location != null) {
+            viewLocationAttributesTextArea.setText(location.toVerboseString());
+        } else {
+            statusLabel.setText("Please select a location from the list");
+        }
+
+
     }
-
-
-
 
 
 
