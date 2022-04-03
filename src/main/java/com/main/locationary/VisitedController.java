@@ -51,6 +51,10 @@ public class VisitedController {
         scopeChoiceBox.getItems().add("Citywide");
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
+        citywideRadioButton.setSelected(true);
+        domesticRadioButton.setSelected(true);
+        internationalRadioButton.setSelected(true);
+
 
     }
 
@@ -84,13 +88,7 @@ public class VisitedController {
         visited.addLocation(visitedLocation);
 
         // update visited display
-        if (visitedLocation.getScope() == Location.Scope.CITYWIDE) {
-            visitedListView.getItems().add("[C] " +visitedLocation);
-        } else if (visitedLocation.getScope() == Location.Scope.DOMESTIC) {
-            visitedListView.getItems().add("[D] " +visitedLocation);
-        } else if (visitedLocation.getScope() == Location.Scope.INTERNATIONAL) {
-            visitedListView.getItems().add("[I] " +visitedLocation);
-        }
+        updateView();
     }
 
     @FXML
@@ -133,8 +131,6 @@ public class VisitedController {
                 visitedListView.getItems().add(location);
             }
         }
-
-
 
     }
 
