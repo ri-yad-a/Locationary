@@ -16,8 +16,8 @@
          <Button layoutX="482.0" layoutY="415.0" mnemonicParsing="false" onAction="#viewEditVisitedButtonClicked" prefHeight="26.0" prefWidth="116.0" text="View/Edit Visited" />
          <Button layoutX="321.0" layoutY="416.0" mnemonicParsing="false" onAction="#viewAttributesButtonClicked" text="View Attributes" />
          <Label layoutX="332.0" layoutY="60.0" text="Welcome to Locationary!" />
-         <ListView layoutX="78.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" />
-         <ListView layoutX="462.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" />
+         <ListView fx:id="bucketListView" layoutX="78.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" />
+         <ListView fx:id="visitedView" layoutX="462.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" />
          <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="850.0">
            <menus>
              <Menu mnemonicParsing="false" text="File">

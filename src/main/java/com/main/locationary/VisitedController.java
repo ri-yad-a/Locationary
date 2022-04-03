@@ -9,7 +9,6 @@ import java.text.NumberFormat;
 
 public class VisitedController {
 
-    Visited visited = new Visited();
 
     @FXML
     private TextField locationNameTextField;
@@ -87,14 +86,14 @@ public class VisitedController {
                 visitedLocation = new Location(scope, locationName);
                 // add location to visited
                 boolean exists = false;
-                for (Location location: visited.getLocations()) {
+                for (Location location: HomeController.visited.getLocations()) {
                     if (location.equals(location)) {
                         exists = true;
                         statusLabel.setText("Location already exists in visted");
                     }
                 }
                 if (!exists) {
-                    visited.addLocation(visitedLocation);
+                    HomeController.visited.addLocation(visitedLocation);
                 }
             }
 
@@ -139,7 +138,7 @@ public class VisitedController {
         boolean d = domesticRadioButton.isSelected();
         boolean i = internationalRadioButton.isSelected();
 
-        for (Location location: visited.getLocations()) {
+        for (Location location: HomeController.visited.getLocations()) {
             if (c && location.getScope() == Location.Scope.CITYWIDE) {
                     visitedListView.getItems().add(location);
             }
