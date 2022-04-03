@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.main.locationary.HomeController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.HomeController">
    <MenuBar prefHeight="25.0" prefWidth="900.0" VBox.vgrow="NEVER">
      <menus>
        <Menu mnemonicParsing="false" text="File">
@@ -47,9 +47,9 @@
          </ScrollPane>
       </items>
    </SplitPane>
-   <Button mnemonicParsing="false" text="Button" />
-   <Button mnemonicParsing="false" text="Button" />
-   <Button mnemonicParsing="false" text="Button" />
+   <Button mnemonicParsing="false" onAction="#viewEditBucketListButtonClicked" text="View/Edit Bucket List" />
+   <Button mnemonicParsing="false" onAction="#viewEditVisitedButtonClicked" prefHeight="26.0" prefWidth="116.0" text="View/Edit Visited" />
+   <Button mnemonicParsing="false" onAction="#viewAttributesButtonClicked" text="View Attributes" />
    <HBox prefHeight="22.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
       <children>
          <Label prefHeight="18.0" prefWidth="34.0" text="Label" />

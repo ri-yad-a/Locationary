@@ -1,27 +1,25 @@
 package com.main.locationary;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-/**
- * CPSC 233 W22 Demo 3
- * Tutorial: T10
- * Date: April 01, 2022
- * Gaurav Ashar, Riyad Abdullayev
- */
 
 public class HomeController {
 
-    void ViewEditBucketListButtonClicked() {
+    @FXML
+    void viewAttributesButtonClicked(ActionEvent event) {
 
     }
 
-    void viewEditVisitedButtonClicked() {
-
+    @FXML
+    void viewEditBucketListButtonClicked(ActionEvent event) {
+        Main.switchScreen("bucketList-view.fxml");
     }
 
-    void viewAttributesButtonClicked() {
+    @FXML
+    void viewEditVisitedButtonClicked(ActionEvent event) {
+        Main.switchScreen("visited-view.fxml");
 
     }
 
 }
+

@@ -47,9 +47,9 @@
          </ScrollPane>
       </items>
    </SplitPane>
-   <Button mnemonicParsing="false" text="Button" />
-   <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Button" />
-   <Button mnemonicParsing="false" text="Button" />
+   <Button mnemonicParsing="false" onAction="#viewEditBucketListButtonClicked" text="View/Edit Bucket List" />
+   <Button mnemonicParsing="false" onAction="#viewEditVisitedButtonClicked" prefHeight="26.0" prefWidth="116.0" text="View/Edit Visited" />
+   <Button mnemonicParsing="false" onAction="#viewAttributesButtonClicked" text="View Attributes" />
    <HBox prefHeight="22.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
       <children>
          <Label prefHeight="18.0" prefWidth="34.0" text="Label" />

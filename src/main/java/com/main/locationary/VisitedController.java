@@ -23,6 +23,12 @@ public class VisitedController {
     private TextField locationNameTextField;
 
     @FXML
+    private TextField reviewTextField;
+
+    @FXML
+    private TextField POITextField;
+
+    @FXML
     private TextField ratingTextField;
 
     @FXML
@@ -43,21 +49,35 @@ public class VisitedController {
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
         // declare a location object that will be added to visited
-        Location visitedLocation = null;
+        Location visitedLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
+        String poiInput =  POITextField.getText();
 
         // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
         // with the correct scope and location name
         if (scopeChoiceBox.getValue() == "Citywide") {
-            visitedLocation = new Location(Location.Scope.CITYWIDE, locationName);
+            visitedLocation.setScope(Location.Scope.CITYWIDE);
         } else if (scopeChoiceBox.getValue() == "Domestic") {
-            visitedLocation = new Location(Location.Scope.DOMESTIC, locationName);
+            visitedLocation.setScope(Location.Scope.DOMESTIC);
         } else if (scopeChoiceBox.getValue() == "International") {
-            visitedLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
+            visitedLocation.setScope(Location.Scope.INTERNATIONAL);
         }
 
+        // if POI text field is not empty then add POI
+        if (!poiInput.equals("")) {
+            POI poi = new POI(poiInput);
+            // add poi to the location
+            visitedLocation.addPOI(poi);
+        }
+
+        // add location to visited
         visited.addLocation(visitedLocation);
 
         // update visited display
+    }
+
+    @FXML
+    void locationaryButtonClicked(ActionEvent event) {
+        Main.switchScreen("home-view.fxml");
     }
 
 }

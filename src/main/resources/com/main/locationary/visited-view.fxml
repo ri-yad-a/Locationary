@@ -20,7 +20,7 @@
       <CheckBox fx:id="internationalCheckBox" layoutX="482.0" layoutY="241.0" mnemonicParsing="false" text="International" />
       <ListView layoutX="335.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" />
       <TextField fx:id="locationNameTextField" layoutX="31.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
-      <TextField layoutX="232.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
+      <TextField fx:id="POITextField" layoutX="232.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
       <Label layoutX="154.0" layoutY="54.0" text="Scope" />
       <Label layoutX="34.0" layoutY="54.0" text="Location Name" />
       <Label layoutX="266.0" layoutY="54.0" text="POI" />
@@ -47,6 +47,7 @@
       <Label layoutX="74.0" layoutY="114.0" text="Rating" />
       <TextField fx:id="ratingTextField" layoutX="127.0" layoutY="109.0" prefHeight="26.0" prefWidth="86.0" />
       <Label layoutX="55.0" layoutY="160.0" text="Review" />
-      <TextArea layoutX="107.0" layoutY="160.0" prefHeight="90.0" prefWidth="200.0" />
+      <TextArea fx:id="reviewTextField" layoutX="107.0" layoutY="160.0" prefHeight="90.0" prefWidth="200.0" />
+      <Button layoutX="5.0" layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
    </children>
 </AnchorPane>

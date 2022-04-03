@@ -39,19 +39,28 @@ public class BucketListController {
 
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
-        // declare a location object that will be added to bucketList
-        Location bucketListLocation = null;
+        // declare a location object that will be added to bucket list
+        Location bucketListLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
+        String poiInput =  POITextField.getText();
 
         // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
         // with the correct scope and location name
         if (scopeChoiceBox.getValue() == "Citywide") {
-            bucketListLocation = new Location(Location.Scope.CITYWIDE, locationName);
+            bucketListLocation.setScope(Location.Scope.CITYWIDE);
         } else if (scopeChoiceBox.getValue() == "Domestic") {
-            bucketListLocation = new Location(Location.Scope.DOMESTIC, locationName);
+            bucketListLocation.setScope(Location.Scope.DOMESTIC);
         } else if (scopeChoiceBox.getValue() == "International") {
-            bucketListLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
+            bucketListLocation.setScope(Location.Scope.INTERNATIONAL);
         }
 
+        // if POI text field is not empty then add POI
+        if (!poiInput.equals("")) {
+            POI poi = new POI(poiInput);
+            // add poi to the location
+            bucketListLocation.addPOI(poi);
+        }
+
+        // add location to bucketList
         bucketList.addLocation(bucketListLocation);
 
         // update bucketList display
@@ -62,5 +71,12 @@ public class BucketListController {
     void completedButtonClicked(ActionEvent event) {
 
     }
+
+    @FXML
+    void locationaryButtonClicked(ActionEvent event) {
+        Main.switchScreen("home-view.fxml");
+    }
+
+
 
 }

@@ -11,20 +11,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.BucketListController">
    <children>
       <Button layoutX="124.0" layoutY="165.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
-      <TextField fx:id="locationNameTextField" layoutX="27.0" layoutY="74.0" prefHeight="26.0" prefWidth="90.0" />
-      <ChoiceBox fx:id="scopeChoiceBox" layoutX="135.0" layoutY="74.0" prefHeight="26.0" prefWidth="81.0" />
+      <TextField fx:id="locationNameTextField" layoutX="31.0" layoutY="115.0" prefHeight="26.0" prefWidth="90.0" />
+      <ChoiceBox fx:id="scopeChoiceBox" layoutX="134.0" layoutY="115.0" prefHeight="26.0" prefWidth="81.0" />
       <TextArea layoutX="366.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" />
       <CheckBox fx:id="citywideCheckBox" layoutX="353.0" layoutY="260.0" mnemonicParsing="false" text="Citywide" />
-      <Label layoutX="36.0" layoutY="56.0" text="Location Name" />
-      <Label layoutX="159.0" layoutY="56.0" text="Scope" />
-      <Label layoutX="260.0" layoutY="56.0" text="POI" />
+      <Label layoutX="36.0" layoutY="91.0" text="Location Name" />
+      <Label layoutX="158.0" layoutY="91.0" text="Scope" />
+      <Label layoutX="269.0" layoutY="91.0" text="POI" />
       <CheckBox fx:id="domesticCheckBox" layoutX="421.0" layoutY="260.0" mnemonicParsing="false" text="Domestic" />
       <CheckBox layoutX="495.0" layoutY="260.0" mnemonicParsing="false" text="International" />
-      <TextField fx:id="POITextField" layoutX="235.0" layoutY="74.0" prefHeight="26.0" prefWidth="90.0" />
+      <TextField fx:id="POITextField" layoutX="234.0" layoutY="115.0" prefHeight="26.0" prefWidth="90.0" />
       <Button layoutX="137.0" layoutY="200.0" mnemonicParsing="false" onAction="#completedButtonClicked" text="Completed" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="600.0">
         <menus>
@@ -45,5 +44,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" textAlignment="CENTER" underline="true" />
    </children>
 </AnchorPane>
