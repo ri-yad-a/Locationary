@@ -76,8 +76,18 @@ public class BucketListController {
             Location bucketListLocation = null;
             if (canCreate) {
                 bucketListLocation = new Location(scope, locationName);
-                // add location to bucketList
-                HomeController.bucketList.addLocation(bucketListLocation);
+                // add location to bucket list
+                boolean exists = false;
+                // check if location exists
+                for (Location location: HomeController.bucketList.getLocations()) {
+                    if (bucketListLocation.getName().equals(location.getName())) {
+                        exists = true;
+                        statusLabel.setText("Location already exists in Bucket List!");
+                    }
+                }
+                if (!exists) {
+                    HomeController.bucketList.addLocation(bucketListLocation);
+                }
             }
 
             // if POI text field is not empty then add POI
