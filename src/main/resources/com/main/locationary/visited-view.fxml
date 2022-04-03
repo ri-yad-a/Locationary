@@ -15,9 +15,9 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.VisitedController">
    <children>
       <Button layoutX="154.0" layoutY="263.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
-      <CheckBox layoutX="335.0" layoutY="241.0" mnemonicParsing="false" text="Citywide" />
-      <CheckBox layoutX="403.0" layoutY="241.0" mnemonicParsing="false" text="Domestic" />
-      <CheckBox layoutX="482.0" layoutY="241.0" mnemonicParsing="false" text="International" />
+      <CheckBox fx:id="citywideCheckBox" layoutX="335.0" layoutY="241.0" mnemonicParsing="false" text="Citywide" />
+      <CheckBox fx:id="domesticCheckBox" layoutX="403.0" layoutY="241.0" mnemonicParsing="false" text="Domestic" />
+      <CheckBox fx:id="internationalCheckBox" layoutX="482.0" layoutY="241.0" mnemonicParsing="false" text="International" />
       <ListView layoutX="335.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" />
       <TextField fx:id="locationNameTextField" layoutX="31.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
       <TextField layoutX="232.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
