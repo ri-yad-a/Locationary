@@ -12,4 +12,16 @@ import javafx.scene.control.Label;
 
 public class HomeController {
 
+    void ViewEditBucketListButtonClicked() {
+
+    }
+
+    void viewEditVisitedButtonClicked() {
+
+    }
+
+    void viewAttributesButtonClicked() {
+
+    }
+
 }

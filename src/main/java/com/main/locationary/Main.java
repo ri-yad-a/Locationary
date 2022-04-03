@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class Main extends Application {
 
-    private Stage mainStage;
+    private static Stage mainStage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -37,7 +37,7 @@ public class Main extends Application {
      * Loads an FXML file to the stage
      * @param filename an FXML file
      */
-    public void switchScreen(String filename) {
+    public static void switchScreen(String filename) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(filename));
             Scene scene = new Scene(fxmlLoader.load(), 850, 650);
