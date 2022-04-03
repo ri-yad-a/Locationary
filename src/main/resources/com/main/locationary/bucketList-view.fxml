@@ -8,20 +8,21 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.BucketListController">
    <children>
-      <Button layoutX="147.0" layoutY="222.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
-      <TextField fx:id="locationNameTextField" layoutX="40.0" layoutY="185.0" prefHeight="26.0" prefWidth="90.0" />
-      <ChoiceBox fx:id="scopeChoiceBox" layoutX="150.0" layoutY="185.0" prefHeight="26.0" prefWidth="81.0" />
-      <Label layoutX="45.0" layoutY="167.0" text="Location Name" />
-      <Label layoutX="174.0" layoutY="167.0" text="Scope" />
-      <Label layoutX="286.0" layoutY="167.0" text="POI" />
-      <TextField fx:id="POITextField" layoutX="251.0" layoutY="185.0" prefHeight="26.0" prefWidth="90.0" />
-      <Button layoutX="153.0" layoutY="339.0" mnemonicParsing="false" onAction="#completedButtonClicked" text="Completed" />
+      <Button layoutX="165.0" layoutY="220.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
+      <TextField fx:id="locationNameTextField" layoutX="61.0" layoutY="185.0" prefHeight="26.0" prefWidth="90.0" />
+      <ChoiceBox fx:id="scopeChoiceBox" layoutX="161.0" layoutY="185.0" prefHeight="26.0" prefWidth="90.0" />
+      <Label layoutX="66.0" layoutY="167.0" text="Location Name" />
+      <Label layoutX="190.0" layoutY="167.0" text="Scope" />
+      <Label layoutX="295.0" layoutY="167.0" text="POI" />
+      <TextField fx:id="POITextField" layoutX="260.0" layoutY="185.0" prefHeight="26.0" prefWidth="90.0" />
+      <Button layoutX="170.0" layoutY="404.0" mnemonicParsing="false" onAction="#completedButtonClicked" text="Completed" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="850.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -42,7 +43,7 @@
         </menus>
       </MenuBar>
       <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" textAlignment="CENTER" underline="true" />
-      <ListView fx:id="locationsView" layoutX="417.0" layoutY="40.0" prefHeight="325.0" prefWidth="422.0" />
+      <ListView fx:id="locationsView" layoutX="417.0" layoutY="40.0" onMouseClicked="#selectLocationAction" prefHeight="325.0" prefWidth="422.0" />
       <RadioButton fx:id="citywideButton" layoutX="425.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Citywide">
          <font>
             <Font size="20.0" />
@@ -58,5 +59,7 @@
             <Font size="20.0" />
          </font>
       </RadioButton>
+      <Label fx:id="statusLabel" layoutY="628.0" text="Label" />
+      <TextArea fx:id="locationDisplay" editable="false" layoutX="31.0" layoutY="253.0" prefHeight="143.0" prefWidth="353.0" promptText="Location attributes will show up here..." />
    </children>
 </AnchorPane>
