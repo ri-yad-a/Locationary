@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class VisitedController {
@@ -23,7 +24,7 @@ public class VisitedController {
     private TextField locationNameTextField;
 
     @FXML
-    private TextField reviewTextField;
+    private TextArea reviewTextArea;
 
     @FXML
     private TextField POITextField;
