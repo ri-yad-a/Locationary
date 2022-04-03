@@ -153,11 +153,10 @@ public class Location implements Comparable, JournalInfo {
     }
 
     /**
-     * Overriden toString method from Object class
+     * Verbose toString method from Object class
      * @return a String representation of this object
      */
-    @Override
-    public String toString() {
+    public String toVerboseString() {
         // add POIs, rating, etc
         String retStr = "";
         boolean c = this.getScope() == Scope.CITYWIDE;
@@ -166,23 +165,40 @@ public class Location implements Comparable, JournalInfo {
 
         if (this.rating != -1) {
             if (c) {
-                retStr += "[C] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+                retStr += "[Citywide] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
             } else if (d) {
-                retStr += "[D] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+                retStr += "[Domestic] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
             } else if (i) {
-                retStr += "[I] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+                retStr += "[International] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
             }
 
         } else {
             if (c) {
-                retStr += "[C] " + this.name + ": \t" + "POIS: " + pois;
+                retStr += "[Citywide] " + this.name + ": \t" + "POIS: " + pois;
             } else if (d) {
-                retStr += "[D] " + this.name + ": \t" + "POIS: " + pois;
+                retStr += "[Domestic] " + this.name + ": \t" + "POIS: " + pois;
             } else if (i) {
-                retStr += "[I] " + this.name + ": \t" + "POIS: " + pois;
+                retStr += "[International] " + this.name + ": \t" + "POIS: " + pois;
             }
 
         }
+        return retStr;
+    }
+
+    @Override
+    public String toString() {
+        String retStr = "";
+        boolean c = this.getScope() == Scope.CITYWIDE;
+        boolean d = this.getScope() == Scope.DOMESTIC;
+        boolean i = this.getScope() == Scope.INTERNATIONAL;
+        if (c) {
+            retStr += "[C] ";
+        } else if (d) {
+            retStr += "[D] ";
+        } else if (i) {
+            retStr += "[I] ";
+        }
+        retStr += this.name;
         return retStr;
     }
 
@@ -212,8 +228,11 @@ public class Location implements Comparable, JournalInfo {
     public boolean equals(Object o) {
         // compare by instance variables
         Location l = (Location) o;
-        return this.pois.equals(l.getPOIs()) && this.name.equals(l.getName())
-                && this.rating == l.getRating() && this.ranking == l.getRanking();
+        if (l != null) {
+            return this.pois.equals(l.getPOIs()) && this.name.equals(l.getName())
+                    && this.rating == l.getRating() && this.ranking == l.getRanking();
+        }
+        return false;
     }
 
 }
