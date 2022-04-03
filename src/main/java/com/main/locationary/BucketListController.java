@@ -3,10 +3,7 @@ package com.main.locationary;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +31,13 @@ public class BucketListController {
     private ChoiceBox<String> scopeChoiceBox;
 
     @FXML
-    private ListView<String> locationsView;
+    private ListView<Location> locationsView;
+
+    @FXML
+    private Label statusLabel;
+
+    @FXML
+    private TextArea locationDisplay;
 
     @FXML
     void initialize() {
@@ -42,6 +45,9 @@ public class BucketListController {
         scopeChoiceBox.getItems().add("Citywide");
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
+        citywideButton.setSelected(true);
+        domesticButton.setSelected(true);
+        internationalButton.setSelected(true);
 
     }
 
@@ -51,31 +57,45 @@ public class BucketListController {
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
         // declare a location object that will be added to bucket list
-        Location bucketListLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
-        String poiInput =  POITextField.getText();
+        if (!locationName.equals("")) {
+            boolean canCreate = true;
+            String poiInput =  POITextField.getText();
+            Location.Scope scope = null;
 
-        // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
-        // with the correct scope and location name
-        if (scopeChoiceBox.getValue() == "Citywide") {
-            bucketListLocation.setScope(Location.Scope.CITYWIDE);
-        } else if (scopeChoiceBox.getValue() == "Domestic") {
-            bucketListLocation.setScope(Location.Scope.DOMESTIC);
-        } else if (scopeChoiceBox.getValue() == "International") {
-            bucketListLocation.setScope(Location.Scope.INTERNATIONAL);
+            // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
+            // with the correct scope and location name
+            if (scopeChoiceBox.getValue() == null) {
+                statusLabel.setText("Please choose a location scope.");
+                canCreate = false;
+            } else if (scopeChoiceBox.getValue().equals("Citywide")) {
+                scope = Location.Scope.CITYWIDE;
+            } else if (scopeChoiceBox.getValue().equals("Domestic")) {
+                scope = Location.Scope.DOMESTIC;
+            } else if (scopeChoiceBox.getValue().equals("International")) {
+                scope = Location.Scope.INTERNATIONAL;
+            }
+
+            Location bucketListLocation = null;
+            if (canCreate) {
+                bucketListLocation = new Location(scope, locationName);
+                // add location to bucketList
+                bucketList.addLocation(bucketListLocation);
+            }
+
+            // if POI text field is not empty then add POI
+            if (!poiInput.equals("") && bucketListLocation != null) {
+                POI poi = new POI(poiInput);
+                // add poi to the location
+                bucketListLocation.addPOI(poi);
+            }
+
+            // update bucketList display
+            updateLocationsView();
+        } else {
+            statusLabel.setText("Please enter a location name.");
         }
 
-        // if POI text field is not empty then add POI
-        if (!poiInput.equals("")) {
-            POI poi = new POI(poiInput);
-            // add poi to the location
-            bucketListLocation.addPOI(poi);
-        }
 
-        // add location to bucketList
-        bucketList.addLocation(bucketListLocation);
-
-        // update bucketList display
-        updateLocationsView();
 
     }
 
@@ -97,19 +117,25 @@ public class BucketListController {
         locationsView.getItems().clear();
         for (Location l: bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.CITYWIDE && c) {
-                locationsView.getItems().add("[C] " + l);
+                locationsView.getItems().add(l);
             }
         }
         for (Location l: bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.DOMESTIC && d) {
-                locationsView.getItems().add("[D] " + l);
+                locationsView.getItems().add(l);
             }
         }
         for (Location l: bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.INTERNATIONAL && i) {
-                locationsView.getItems().add("[I] " + l);
+                locationsView.getItems().add(l);
             }
         }
+    }
+
+    @FXML
+    void selectLocationAction() {
+        ObservableList<Location> ol = locationsView.getSelectionModel().getSelectedItems();
+        locationDisplay.setText(ol.get(0).toVerboseString());
     }
 
 
