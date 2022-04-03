@@ -23,19 +23,35 @@ public class HomeController {
 
         // if bucketlist has less than or equal to 5 locations
         // then output all those locations to the bucket list view
-        ArrayList<Location> bucketListLocations = new ArrayList<Location>();
-        int size = bucketListLocations.size();
-        if (size <= 5) {
+        ArrayList<Location> bucketListLocations = bucketList.getLocations();
+        int blSize = bucketListLocations.size();
+        if (blSize <= 5) {
             for (Location location: bucketListLocations) {
                 bucketListView.getItems().add(location);
             }
             // if the bucketlist has more, output the last 5
-        } else if (size > 5) {
-            int startIdx = size - 5;
-            for (int i = startIdx; i < size; i++) {
+        } else if (blSize > 5) {
+            int startIdx = blSize - 5;
+            for (int i = startIdx; i < blSize; i++) {
                 bucketListView.getItems().add(bucketListLocations.get(i));
             }
         }
+
+        // if visited has less than or equal to 5 locations
+        // then output all those locations to the visited view
+        ArrayList<Location> visitedLocations = visited.getLocations();
+        int vSize = visitedLocations.size();
+        if (vSize <= 5) {
+            for (Location location: visitedLocations) {
+                visitedView.getItems().add(location);
+            }
+        }
+
+        if (vSize > 5) {
+            // output the 5 most hightly rated locations
+        }
+
+
 
     }
 
