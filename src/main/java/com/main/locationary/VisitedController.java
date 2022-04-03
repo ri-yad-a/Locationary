@@ -87,9 +87,9 @@ public class VisitedController {
                 // add location to visited
                 boolean exists = false;
                 for (Location location: HomeController.visited.getLocations()) {
-                    if (location.equals(location)) {
+                    if (location.getName().equals(visitedLocation.getName())) {
                         exists = true;
-                        statusLabel.setText("Location already exists in visted");
+                        statusLabel.setText("Location already exists in visited");
                     }
                 }
                 if (!exists) {
