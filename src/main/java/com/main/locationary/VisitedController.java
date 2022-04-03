@@ -3,6 +3,9 @@ package com.main.locationary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+
+import java.text.NumberFormat;
 
 public class VisitedController {
 
@@ -44,6 +47,9 @@ public class VisitedController {
     @FXML
     private RadioButton internationalRadioButton;
 
+    @FXML
+    private Label statusLabel;
+
 
     @FXML
     void initialize() {
@@ -63,29 +69,55 @@ public class VisitedController {
 
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
-        // declare a location object that will be added to visited
-        Location visitedLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
-        String poiInput =  POITextField.getText();
+        String scopeChoice = scopeChoiceBox.getValue();
+        String poiInput = POITextField.getText();
 
-        // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
-        // with the correct scope and location name
-        if (scopeChoiceBox.getValue() == "Citywide") {
-            visitedLocation.setScope(Location.Scope.CITYWIDE);
-        } else if (scopeChoiceBox.getValue() == "Domestic") {
-            visitedLocation.setScope(Location.Scope.DOMESTIC);
-        } else if (scopeChoiceBox.getValue() == "International") {
-            visitedLocation.setScope(Location.Scope.INTERNATIONAL);
+        if (!locationName.equals("")) {
+            // declare a location object that will be added to visited
+            Location visitedLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
+
+            // if POI text field is not empty then add POI
+            if (!poiInput.equals("")) {
+                POI poi = new POI(poiInput);
+                try {
+                    String rating = ratingTextField.getText();
+                    if (!rating.equals("")) {
+                        poi.setRating(Integer.parseInt(rating));
+                    }
+                    // add poi to the location
+                    visitedLocation.addPOI(poi);
+
+                } catch (NumberFormatException e) {
+                    statusLabel.setTextFill(Color.rgb(255, 0, 0));
+                    statusLabel.setText("Please enter a value between 1-5 for POI rating");
+                }
+
+            }
+
+
+            if (scopeChoice != null) {
+                // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
+                // with the correct scope and location name
+                if (scopeChoice == "Citywide") {
+                    visitedLocation.setScope(Location.Scope.CITYWIDE);
+                } else if (scopeChoice == "Domestic") {
+                    visitedLocation.setScope(Location.Scope.DOMESTIC);
+                } else if (scopeChoice == "International") {
+                    visitedLocation.setScope(Location.Scope.INTERNATIONAL);
+                }
+
+                // add location to visited
+                visited.addLocation(visitedLocation);
+                // else when location name input is empty
+
+            } else {
+                statusLabel.setTextFill(Color.rgb(255, 0, 0));
+                statusLabel.setText("Please choose a location scope");
+            }
+        } else {
+            statusLabel.setTextFill(Color.rgb(255, 0, 0));
+            statusLabel.setText("Please enter a location name");
         }
-
-        // if POI text field is not empty then add POI
-        if (!poiInput.equals("")) {
-            POI poi = new POI(poiInput);
-            // add poi to the location
-            visitedLocation.addPOI(poi);
-        }
-
-        // add location to visited
-        visited.addLocation(visitedLocation);
 
         // update visited display
         updateView();
@@ -112,7 +144,6 @@ public class VisitedController {
     }
 
 
-    @FXML
     void updateView() {
         visitedListView.getItems().clear();
 
@@ -131,6 +162,10 @@ public class VisitedController {
                 visitedListView.getItems().add(location);
             }
         }
+
+    }
+
+    void viewInfo() {
 
     }
 

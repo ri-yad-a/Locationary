@@ -21,7 +21,7 @@
       <Label layoutX="190.0" layoutY="132.0" text="Scope" />
       <Label layoutX="67.0" layoutY="132.0" text="Location Name" />
       <Label layoutX="297.0" layoutY="132.0" text="POI" />
-      <ChoiceBox fx:id="scopeChoiceBox" layoutX="164.0" layoutY="150.0" prefHeight="26.0" prefWidth="86.0" />
+      <ChoiceBox fx:id="scopeChoiceBox" layoutX="158.0" layoutY="150.0" prefHeight="26.0" prefWidth="97.0" />
       <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="850.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -62,5 +62,6 @@
             <Font size="20.0" />
          </font>
       </RadioButton>
+      <Label fx:id="statusLabel" layoutX="41.0" layoutY="611.0" text="Status Label" />
    </children>
 </AnchorPane>
