@@ -10,8 +10,6 @@ import java.util.List;
 
 public class BucketListController {
 
-    BucketList bucketList = new BucketList();
-
     @FXML
     private TextField POITextField;
 
@@ -79,7 +77,7 @@ public class BucketListController {
             if (canCreate) {
                 bucketListLocation = new Location(scope, locationName);
                 // add location to bucketList
-                bucketList.addLocation(bucketListLocation);
+                HomeController.bucketList.addLocation(bucketListLocation);
             }
 
             // if POI text field is not empty then add POI
@@ -115,17 +113,17 @@ public class BucketListController {
         boolean d = domesticButton.isSelected();
         boolean i = internationalButton.isSelected();
         locationsView.getItems().clear();
-        for (Location l: bucketList.getLocations()) {
+        for (Location l: HomeController.bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.CITYWIDE && c) {
                 locationsView.getItems().add(l);
             }
         }
-        for (Location l: bucketList.getLocations()) {
+        for (Location l: HomeController.bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.DOMESTIC && d) {
                 locationsView.getItems().add(l);
             }
         }
-        for (Location l: bucketList.getLocations()) {
+        for (Location l: HomeController.bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.INTERNATIONAL && i) {
                 locationsView.getItems().add(l);
             }
