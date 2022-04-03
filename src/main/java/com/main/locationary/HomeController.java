@@ -48,7 +48,7 @@ public class HomeController {
         }
 
         if (vSize > 5) {
-            // output the 5 most hightly rated locations
+            // output the 5 most highly rated locations
         }
 
 
