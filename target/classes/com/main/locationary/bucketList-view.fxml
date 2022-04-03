@@ -43,23 +43,28 @@
         </menus>
       </MenuBar>
       <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" textAlignment="CENTER" underline="true" />
-      <ListView fx:id="locationsView" layoutX="417.0" layoutY="40.0" onMouseClicked="#selectLocationAction" prefHeight="325.0" prefWidth="422.0" />
-      <RadioButton fx:id="citywideButton" layoutX="425.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Citywide">
+      <ListView fx:id="locationsView" layoutX="413.0" layoutY="57.0" onMouseClicked="#selectLocationAction" prefHeight="325.0" prefWidth="422.0" />
+      <RadioButton fx:id="citywideButton" layoutX="425.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Citywide">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="domesticButton" layoutX="556.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Domestic">
+      <RadioButton fx:id="domesticButton" layoutX="554.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Domestic">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="internationalButton" layoutX="690.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateLocationsView" text="International">
+      <RadioButton fx:id="internationalButton" layoutX="687.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateLocationsView" text="International">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
       <Label fx:id="statusLabel" layoutY="628.0" text="Label" />
       <TextArea fx:id="locationDisplay" editable="false" layoutX="31.0" layoutY="253.0" prefHeight="143.0" prefWidth="353.0" promptText="Location attributes will show up here..." />
+      <Label layoutX="413.0" layoutY="28.0" text="Bucket Listed Locations">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
