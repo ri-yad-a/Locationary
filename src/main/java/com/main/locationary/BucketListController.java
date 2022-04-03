@@ -1,10 +1,15 @@
 package com.main.locationary;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BucketListController {
 
@@ -14,16 +19,22 @@ public class BucketListController {
     private TextField POITextField;
 
     @FXML
-    private CheckBox citywideCheckBox;
+    private RadioButton citywideButton;
 
     @FXML
-    private CheckBox domesticCheckBox;
+    private RadioButton domesticButton;
+
+    @FXML
+    private RadioButton internationalButton;
 
     @FXML
     private TextField locationNameTextField;
 
     @FXML
     private ChoiceBox<String> scopeChoiceBox;
+
+    @FXML
+    private ListView<String> locationsView;
 
     @FXML
     void initialize() {
@@ -64,6 +75,7 @@ public class BucketListController {
         bucketList.addLocation(bucketListLocation);
 
         // update bucketList display
+        updateLocationsView();
 
     }
 
@@ -76,6 +88,31 @@ public class BucketListController {
     void locationaryButtonClicked(ActionEvent event) {
         Main.switchScreen("home-view.fxml");
     }
+
+    @FXML
+    void updateLocationsView() {
+        boolean c = citywideButton.isSelected();
+        boolean d = domesticButton.isSelected();
+        boolean i = internationalButton.isSelected();
+        locationsView.getItems().clear();
+        for (Location l: bucketList.getLocations()) {
+            if (l.getScope() == Location.Scope.CITYWIDE && c) {
+                locationsView.getItems().add("[C] " + l);
+            }
+        }
+        for (Location l: bucketList.getLocations()) {
+            if (l.getScope() == Location.Scope.DOMESTIC && d) {
+                locationsView.getItems().add("[D] " + l);
+            }
+        }
+        for (Location l: bucketList.getLocations()) {
+            if (l.getScope() == Location.Scope.INTERNATIONAL && i) {
+                locationsView.getItems().add("[I] " + l);
+            }
+        }
+    }
+
+
 
 
 
