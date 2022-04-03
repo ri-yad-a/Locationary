@@ -47,17 +47,17 @@
       <TextArea fx:id="reviewTextArea" layoutX="107.0" layoutY="256.0" prefHeight="90.0" prefWidth="200.0" />
       <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
       <ListView fx:id="visitedListView" layoutX="423.0" layoutY="63.0" onMouseClicked="#viewLocationInformationClicked" prefHeight="289.0" prefWidth="391.0" />
-      <RadioButton fx:id="citywideRadioButton" layoutX="423.0" layoutY="374.0" mnemonicParsing="false" onAction="#citywideChecked" text="Citywide">
+      <RadioButton fx:id="citywideRadioButton" layoutX="423.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateView" text="Citywide">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="domesticRadioButton" layoutX="546.0" layoutY="377.0" mnemonicParsing="false" onAction="#domesticChecked" text="Domestic">
+      <RadioButton fx:id="domesticRadioButton" layoutX="546.0" layoutY="377.0" mnemonicParsing="false" onAction="#updateView" text="Domestic">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="internationalRadioButton" layoutX="674.0" layoutY="377.0" mnemonicParsing="false" onAction="#internationalChecked" text="International">
+      <RadioButton fx:id="internationalRadioButton" layoutX="674.0" layoutY="377.0" mnemonicParsing="false" onAction="#updateView" text="International">
          <font>
             <Font size="20.0" />
          </font>
