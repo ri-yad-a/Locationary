@@ -12,15 +12,6 @@ public class VisitedController {
     Visited visited = new Visited();
 
     @FXML
-    private CheckBox citywideCheckBox;
-
-    @FXML
-    private CheckBox domesticCheckBox;
-
-    @FXML
-    private CheckBox internationalCheckBox;
-
-    @FXML
     private TextField locationNameTextField;
 
     @FXML
@@ -64,7 +55,6 @@ public class VisitedController {
         domesticRadioButton.setSelected(true);
         internationalRadioButton.setSelected(true);
 
-
     }
 
     @FXML
@@ -72,58 +62,54 @@ public class VisitedController {
 
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
-        String scopeChoice = scopeChoiceBox.getValue();
-        String poiInput = POITextField.getText();
-
+        // declare a location object that will be added to bucket list
         if (!locationName.equals("")) {
-            // declare a location object that will be added to visited
-            Location visitedLocation = new Location(Location.Scope.INTERNATIONAL, locationName);
+            boolean canCreate = true;
+            String poiInput =  POITextField.getText();
+            Location.Scope scope = null;
+
+            // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
+            // with the correct scope and location name
+            if (scopeChoiceBox.getValue() == null) {
+                statusLabel.setText("Please choose a location scope.");
+                canCreate = false;
+            } else if (scopeChoiceBox.getValue().equals("Citywide")) {
+                scope = Location.Scope.CITYWIDE;
+            } else if (scopeChoiceBox.getValue().equals("Domestic")) {
+                scope = Location.Scope.DOMESTIC;
+            } else if (scopeChoiceBox.getValue().equals("International")) {
+                scope = Location.Scope.INTERNATIONAL;
+            }
+
+            Location visitedLocation = null;
+            if (canCreate) {
+                visitedLocation = new Location(scope, locationName);
+                // add location to bucketList
+                visited.addLocation(visitedLocation);
+            }
 
             // if POI text field is not empty then add POI
-            if (!poiInput.equals("")) {
+            if (!poiInput.equals("") && visitedLocation != null) {
                 POI poi = new POI(poiInput);
-                try {
-                    String rating = ratingTextField.getText();
-                    if (!rating.equals("")) {
-                        poi.setRating(Integer.parseInt(rating));
+                String ratingStr = ratingTextField.getText();
+                if (!ratingStr.equals("")) {
+                    try {
+                        double rating = Double.parseDouble(ratingStr);
+                        poi.setRating(rating);
+                    } catch (NumberFormatException e) {
+                        statusLabel.setText("Please enter a value between 1 and 5 for location rating");
                     }
-                    // add poi to the location
-                    visitedLocation.addPOI(poi);
-
-                } catch (NumberFormatException e) {
-                    statusLabel.setTextFill(Color.rgb(255, 0, 0));
-                    statusLabel.setText("Please enter a value between 1-5 for POI rating");
                 }
-
+                // add poi to the location
+                visitedLocation.addPOI(poi);
             }
 
-
-            if (scopeChoice != null) {
-                // check the scope choice of the user form scopeChoiceBox and set the visitedLocation object
-                // with the correct scope and location name
-                if (scopeChoice == "Citywide") {
-                    visitedLocation.setScope(Location.Scope.CITYWIDE);
-                } else if (scopeChoice == "Domestic") {
-                    visitedLocation.setScope(Location.Scope.DOMESTIC);
-                } else if (scopeChoice == "International") {
-                    visitedLocation.setScope(Location.Scope.INTERNATIONAL);
-                }
-
-                // add location to visited
-                visited.addLocation(visitedLocation);
-                // else when location name input is empty
-
-            } else {
-                statusLabel.setTextFill(Color.rgb(255, 0, 0));
-                statusLabel.setText("Please choose a location scope");
-            }
+            // update bucketList display
+            updateView();
         } else {
-            statusLabel.setTextFill(Color.rgb(255, 0, 0));
-            statusLabel.setText("Please enter a location name");
+            statusLabel.setText("Please enter a location name.");
         }
 
-        // update visited display
-        updateView();
     }
 
     @FXML
@@ -131,22 +117,8 @@ public class VisitedController {
         Main.switchScreen("home-view.fxml");
     }
 
-    @FXML
-    void citywideChecked(ActionEvent event) {
-        updateView();
-    }
 
     @FXML
-    void domesticChecked(ActionEvent event) {
-        updateView();
-    }
-
-    @FXML
-    void internationalChecked(ActionEvent event) {
-        updateView();
-    }
-
-
     void updateView() {
         visitedListView.getItems().clear();
 
