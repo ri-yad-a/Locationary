@@ -63,5 +63,6 @@
          </font>
       </RadioButton>
       <Label fx:id="statusLabel" layoutX="41.0" layoutY="611.0" text="Status Label" />
+      <TextArea layoutX="81.0" layoutY="417.0" prefHeight="147.0" prefWidth="284.0" promptText="Location attributes will show here..." />
    </children>
 </AnchorPane>
