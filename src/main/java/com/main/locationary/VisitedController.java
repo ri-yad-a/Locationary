@@ -33,7 +33,7 @@ public class VisitedController {
     private TextField ratingTextField;
 
     @FXML
-    private ListView visitedListView;
+    private ListView<Location> visitedListView;
 
     @FXML
     private ChoiceBox<String> scopeChoiceBox;
@@ -49,6 +49,9 @@ public class VisitedController {
 
     @FXML
     private Label statusLabel;
+
+    @FXML
+    private TextArea viewLocationAttributesTextArea;
 
 
     @FXML
@@ -165,9 +168,12 @@ public class VisitedController {
 
     }
 
-    void viewInfo() {
-
+    @FXML
+    void viewLocationInformationClicked(ActionEvent event) {
+        Location location = visitedListView.getSelectionModel().getSelectedItem();
+        viewLocationAttributesTextArea.setText(location.toVerboseString());
     }
+
 
 
 

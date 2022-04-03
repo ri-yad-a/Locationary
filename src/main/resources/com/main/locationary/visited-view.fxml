@@ -46,7 +46,7 @@
       <Label layoutX="55.0" layoutY="256.0" text="Review" />
       <TextArea fx:id="reviewTextArea" layoutX="107.0" layoutY="256.0" prefHeight="90.0" prefWidth="200.0" />
       <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
-      <ListView fx:id="visitedListView" layoutX="423.0" layoutY="63.0" prefHeight="289.0" prefWidth="391.0" />
+      <ListView fx:id="visitedListView" layoutX="423.0" layoutY="63.0" onMouseClicked="#viewLocationInformationClicked" prefHeight="289.0" prefWidth="391.0" />
       <RadioButton fx:id="citywideRadioButton" layoutX="423.0" layoutY="374.0" mnemonicParsing="false" onAction="#citywideChecked" text="Citywide">
          <font>
             <Font size="20.0" />
@@ -63,5 +63,6 @@
          </font>
       </RadioButton>
       <Label fx:id="statusLabel" layoutX="41.0" layoutY="611.0" text="Status Label" />
+      <TextArea fx:id="viewLocationAttributesTextArea" layoutX="81.0" layoutY="417.0" prefHeight="147.0" prefWidth="284.0" promptText="Location attributes will show here..." />
    </children>
 </AnchorPane>
