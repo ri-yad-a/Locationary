@@ -134,8 +134,8 @@ public class BucketListController {
 
     @FXML
     void selectLocationAction() {
-        ObservableList<Location> ol = locationsView.getSelectionModel().getSelectedItems();
-        locationDisplay.setText(ol.get(0).toVerboseString());
+        Location l = locationsView.getSelectionModel().getSelectedItem();
+        locationDisplay.setText(l.toVerboseString());
     }
 
 
