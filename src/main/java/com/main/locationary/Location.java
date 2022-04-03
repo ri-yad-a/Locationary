@@ -160,10 +160,28 @@ public class Location implements Comparable, JournalInfo {
     public String toString() {
         // add POIs, rating, etc
         String retStr = "";
+        boolean c = this.getScope() == Scope.CITYWIDE;
+        boolean d = this.getScope() == Scope.DOMESTIC;
+        boolean i = this.getScope() == Scope.INTERNATIONAL;
+
         if (this.rating != -1) {
-            retStr += this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+            if (c) {
+                retStr += "[C] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+            } else if (d) {
+                retStr += "[D] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+            } else if (i) {
+                retStr += "[I] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+            }
+
         } else {
-            retStr += this.name + ": \t" + "POIS: " + pois;
+            if (c) {
+                retStr += "[C] " + this.name + ": \t" + "POIS: " + pois;
+            } else if (d) {
+                retStr += "[D] " + this.name + ": \t" + "POIS: " + pois;
+            } else if (i) {
+                retStr += "[I] " + this.name + ": \t" + "POIS: " + pois;
+            }
+
         }
         return retStr;
     }

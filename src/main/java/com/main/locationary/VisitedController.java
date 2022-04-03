@@ -118,21 +118,19 @@ public class VisitedController {
     void updateView() {
         visitedListView.getItems().clear();
 
+        boolean c = citywideRadioButton.isSelected();
+        boolean d = domesticRadioButton.isSelected();
+        boolean i = internationalRadioButton.isSelected();
+
         for (Location location: visited.getLocations()) {
-            if (citywideRadioButton.isSelected()) {
-                if (location.getScope() == Location.Scope.CITYWIDE) {
-                    visitedListView.getItems().add("[C] " + location);
-                }
+            if (c && location.getScope() == Location.Scope.CITYWIDE) {
+                    visitedListView.getItems().add(location);
             }
-            if (domesticRadioButton.isSelected()) {
-                if (location.getScope() == Location.Scope.DOMESTIC) {
-                    visitedListView.getItems().add("[D] " + location);
-                }
+            if (d && location.getScope() == Location.Scope.DOMESTIC) {
+                visitedListView.getItems().add(location);
             }
-            if (internationalRadioButton.isSelected()) {
-                if (location.getScope() == Location.Scope.INTERNATIONAL) {
-                    visitedListView.getItems().add("[I] " + location);
-                }
+            if (i && location.getScope() == Location.Scope.INTERNATIONAL) {
+                visitedListView.getItems().add(location);
             }
         }
 
