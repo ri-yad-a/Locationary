@@ -11,21 +11,31 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.VisitedController">
+<AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.VisitedController">
    <children>
-      <Button layoutX="154.0" layoutY="263.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
-      <CheckBox fx:id="citywideCheckBox" layoutX="335.0" layoutY="241.0" mnemonicParsing="false" text="Citywide" />
-      <CheckBox fx:id="domesticCheckBox" layoutX="403.0" layoutY="241.0" mnemonicParsing="false" text="Domestic" />
-      <CheckBox fx:id="internationalCheckBox" layoutX="482.0" layoutY="241.0" mnemonicParsing="false" text="International" />
-      <ListView layoutX="335.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField fx:id="locationNameTextField" layoutX="31.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
-      <TextField fx:id="POITextField" layoutX="232.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
-      <Label layoutX="154.0" layoutY="54.0" text="Scope" />
-      <Label layoutX="34.0" layoutY="54.0" text="Location Name" />
-      <Label layoutX="266.0" layoutY="54.0" text="POI" />
-      <ChoiceBox fx:id="scopeChoiceBox" layoutX="127.0" layoutY="69.0" prefHeight="26.0" prefWidth="86.0" />
-      <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="600.0">
+      <Button layoutX="164.0" layoutY="364.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
+      <CheckBox fx:id="citywideCheckBox" layoutX="423.0" layoutY="362.0" mnemonicParsing="false" text="Citywide">
+         <font>
+            <Font size="20.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="domesticCheckBox" layoutX="555.0" layoutY="342.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="118.0" text="Domestic">
+         <font>
+            <Font size="19.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="internationalCheckBox" layoutX="684.0" layoutY="347.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="152.0" text="International">
+         <font>
+            <Font size="20.0" />
+         </font></CheckBox>
+      <ListView layoutX="425.0" layoutY="39.0" prefHeight="322.0" prefWidth="411.0" />
+      <TextField fx:id="locationNameTextField" layoutX="64.0" layoutY="150.0" prefHeight="26.0" prefWidth="86.0" />
+      <TextField fx:id="POITextField" layoutX="264.0" layoutY="150.0" prefHeight="26.0" prefWidth="86.0" />
+      <Label layoutX="190.0" layoutY="132.0" text="Scope" />
+      <Label layoutX="67.0" layoutY="132.0" text="Location Name" />
+      <Label layoutX="297.0" layoutY="132.0" text="POI" />
+      <ChoiceBox fx:id="scopeChoiceBox" layoutX="164.0" layoutY="150.0" prefHeight="26.0" prefWidth="86.0" />
+      <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="850.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -44,10 +54,10 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label layoutX="74.0" layoutY="114.0" text="Rating" />
-      <TextField fx:id="ratingTextField" layoutX="127.0" layoutY="109.0" prefHeight="26.0" prefWidth="86.0" />
-      <Label layoutX="55.0" layoutY="160.0" text="Review" />
-      <TextArea fx:id="reviewTextArea" layoutX="107.0" layoutY="160.0" prefHeight="90.0" prefWidth="200.0" />
-      <Button layoutX="5.0" layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
+      <Label layoutX="57.0" layoutY="204.0" text="Rating" />
+      <TextField fx:id="ratingTextField" layoutX="107.0" layoutY="200.0" prefHeight="26.0" prefWidth="86.0" />
+      <Label layoutX="55.0" layoutY="256.0" text="Review" />
+      <TextArea fx:id="reviewTextArea" layoutX="107.0" layoutY="256.0" prefHeight="90.0" prefWidth="200.0" />
+      <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
    </children>
 </AnchorPane>
