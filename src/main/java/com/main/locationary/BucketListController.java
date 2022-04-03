@@ -135,6 +135,7 @@ public class BucketListController {
     @FXML
     void selectLocationAction() {
         Location l = locationsView.getSelectionModel().getSelectedItem();
+        statusLabel.setText("Showing attributes of location " + l.getName());
         locationDisplay.setText(l.toVerboseString());
     }
 
