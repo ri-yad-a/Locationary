@@ -1,2 +1,4 @@
-package com.main.locationary;public class VisitedController {
+package com.main.locationary;
+
+public class VisitedController {
 }
