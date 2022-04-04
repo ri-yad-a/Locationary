@@ -41,6 +41,9 @@ public class VisitedController {
     private Label statusLabel;
 
     @FXML
+    private Label ratingNumberLabel;
+
+    @FXML
     private ListView<POI> displayLocationPOIS;
 
     @FXML
@@ -208,8 +211,6 @@ public class VisitedController {
     @FXML
     void poiDisplayClicked() {
 
-        POI selectedPOI = displayLocationPOIS.getSelectionModel().getSelectedItem();
-
         ratingSlider.setDisable(false);
         ratingLabel.setDisable(false);
         addRatingButton.setDisable(false);
@@ -228,6 +229,12 @@ public class VisitedController {
         } catch (NumberFormatException e) {
             statusLabel.setText("Please enter a value between 1 and 5 for location rating");
         }
+    }
+
+    @FXML
+    void updateRatingNumberLabel() {
+        ratingNumberLabel.setText("" + ratingSlider.getValue());
+
     }
 
 
