@@ -9,7 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class HomeController {
@@ -106,12 +109,48 @@ public class HomeController {
 
     @FXML
     void saveAction() {
-
+        // write to default file
+        boolean b = FileHandler.writeToFile("data.csv", bucketList, visited);
+        if (b) {
+            // set right status to success message
+            statusLabel.setTextFill(Color.BLACK);
+            statusLabel.setText("Data saved to data.csv");
+        } else {
+            // set right status to fail message
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("Unable to write to default file, data.csv!");
+        }
     }
 
     @FXML
     void saveAsAction() {
+        // setup file chooser
+        final FileChooser fileChooser = new FileChooser();
+        // set initial directory and filename
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+        fileChooser.setInitialFileName("data.csv");
+        // get file from file chooser in a new window
+        File fileSave = fileChooser.showSaveDialog(new Stage());
+        // null occurs when user does not choose any file to save to
+        if (fileSave != null) {
+            // save to specifed file
+            boolean b = FileHandler.writeToFile(fileSave.getPath(), bucketList, visited);
+            if (b) {
+                // set right status to success message
+                statusLabel.setTextFill(Color.BLACK);
+                statusLabel.setText("Data saved to " + fileSave.getName());
+            } else {
+                // set right status to fail message
+                statusLabel.setTextFill(Color.RED);
+                statusLabel.setText("Data could not be saved to specified file!");
+            }
 
+        } else {
+            // set right status message to fail message
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("File not chosen!");
+        }
     }
 
     /**

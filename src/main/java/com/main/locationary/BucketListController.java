@@ -54,7 +54,7 @@ public class BucketListController {
         internationalButton.setSelected(true);
         newPOIField.setDisable(true);
         addPOIButton.setDisable(true);
-
+        updateLocationsView();
     }
 
     @FXML
