@@ -165,13 +165,16 @@ public class VisitedController {
 
         Location location = visitedListView.getSelectionModel().getSelectedItem();
         if (location != null) {
-            newPOIButton.setDisable(false);
-            newPOILabel.setDisable(false);
-            newPOITextField.setDisable(false);
+            statusLabel.setText("Showing attributes of location " + location.getName());
             viewLocationAttributesTextArea.setText(location.toVerboseString());
+            newPOIButton.setDisable(false);
+            newPOITextField.setDisable(false);
         } else {
-            statusLabel.setText("Please select a location from the list");
+            newPOIButton.setDisable(true);
+            newPOITextField.setDisable(true);
+            statusLabel.setText("Please select a location from the list.");
         }
+
 
     }
 
@@ -188,7 +191,7 @@ public class VisitedController {
                         statusLabel.setText("POI already exists in this location");
                     } else {
                         location.addPOI(new POI(poi));
-                        viewLocationAttributesTextArea.setText(selectedLocation.toVerboseString());
+                        viewLocationInformationClicked();
                     }
                 } else {
                     statusLabel.setText("Please enter a name for a new POI");
@@ -198,6 +201,14 @@ public class VisitedController {
         }
 
 
+    }
+
+    @FXML
+    void unselectLocationAction() {
+        visitedListView.getSelectionModel().clearSelection();
+        viewLocationAttributesTextArea.setText("");
+        newPOIButton.setDisable(true);
+        newPOITextField.setDisable(true);
     }
 
 

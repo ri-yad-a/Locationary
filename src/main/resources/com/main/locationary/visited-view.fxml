@@ -67,5 +67,6 @@
       <TextField fx:id="newPOITextField" layoutX="211.0" layoutY="490.0" prefHeight="26.0" prefWidth="86.0" />
       <Label fx:id="newPOILabel" layoutX="78.0" layoutY="495.0" text="Name of POI to add:" />
       <Button fx:id="newPOIButton" layoutX="143.0" layoutY="521.0" mnemonicParsing="false" onAction="#newPOIButtonClicked" text="Add New POI" />
+      <Button layoutX="554.0" layoutY="465.0" mnemonicParsing="false" onAction="#unselectLocationAction" text="Unselect" />
    </children>
 </AnchorPane>
