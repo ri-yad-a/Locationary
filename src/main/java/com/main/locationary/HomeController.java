@@ -2,6 +2,7 @@ package com.main.locationary;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -29,9 +30,16 @@ public class HomeController {
     @FXML
     private Label statusLabel;
 
+    @FXML
+    private Button attributesButton;
 
     @FXML
-    void viewAttributesButtonClicked(ActionEvent event) {
+    void initialize() {
+        attributesButton.setDisable(true);
+        updateViews();
+    }
+
+    void updateViews() {
 
         // if bucketlist has less than or equal to 5 locations
         // then output all those locations to the bucket list view
@@ -66,7 +74,7 @@ public class HomeController {
     }
 
     @FXML
-    void viewEditBucketListButtonClicked(ActionEvent event) {
+    void viewEditBucketListButtonClicked() {
         Main.switchScreen("bucketList-view.fxml");
     }
 
@@ -159,6 +167,67 @@ public class HomeController {
     @FXML
     void quitAction() {
         System.exit(0);
+    }
+
+    /**
+     * View information
+     */
+    @FXML
+    void aboutAction() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About Locationary");
+        alert.setHeaderText("Locationary");
+        alert.setContentText("Locationary is a traveller's journal that keeps track of places one wants to travel to, and places that travellers have already been. " +
+                "Authors:\nGaurav Ashar (gaurav.ashar@ucalgary.ca)\nRiyad Abdullayev (riyad.abdullayev@ucalgary.ca)");
+        alert.show();
+    }
+
+    /**
+     * Select a location from the Bucket List view
+     */
+    @FXML
+    void selectBucketListLocationAction() {
+        // clear selection from other
+        visitedView.getSelectionModel().clearSelection();
+        // get selected item
+        Location l = bucketListView.getSelectionModel().getSelectedItem();
+        // check if null
+        if (l != null) {
+            attributesButton.setDisable(false);
+        } else {
+            attributesButton.setDisable(true);
+            statusLabel.setText("Please choose a location from the list!");
+        }
+    }
+
+    /**
+     * Select a location from the Visited view
+     */
+    @FXML
+    void selectVisitedLocationAction() {
+        // clear selection from other
+        bucketListView.getSelectionModel().clearSelection();
+        // get selected item
+        Location l = visitedView.getSelectionModel().getSelectedItem();
+        // check if null
+        if (l != null) {
+            attributesButton.setDisable(false);
+        } else {
+            statusLabel.setText("Please choose a location from the list!");
+        }
+    }
+
+    @FXML
+    void viewAttributesAction() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Location l = bucketListView.getSelectionModel().getSelectedItem();
+        if (l == null) {
+            l = visitedView.getSelectionModel().getSelectedItem();
+        }
+        alert.setTitle("Information about a location");
+        alert.setHeaderText(l.getName());
+        alert.setContentText(l.toVerboseString());
+        alert.show();
     }
 
 
