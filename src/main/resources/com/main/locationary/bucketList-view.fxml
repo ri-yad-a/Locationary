@@ -24,7 +24,7 @@
       <Label layoutX="190.0" layoutY="167.0" text="Scope" />
       <Label layoutX="295.0" layoutY="167.0" text="POI" />
       <TextField fx:id="POITextField" layoutX="276.0" layoutY="185.0" prefHeight="26.0" prefWidth="119.0" />
-      <Button layoutX="251.0" layoutY="443.0" mnemonicParsing="false" onAction="#completedButtonClicked" text="Completed" />
+      <Button fx:id="completedButton" disable="true" layoutX="251.0" layoutY="443.0" mnemonicParsing="false" onAction="#completedButtonClicked" text="Completed" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="850.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">

@@ -77,4 +77,8 @@ public class BucketList extends Journal {
         BucketList bl = (BucketList) o;
         return this.locations.equals(bl.getLocations());
     }
+
+    public void removeLocation(Location l) {
+        locations.remove(l);
+    }
 }

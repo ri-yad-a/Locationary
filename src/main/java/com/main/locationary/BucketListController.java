@@ -40,6 +40,9 @@ public class BucketListController {
     private Button addPOIButton;
 
     @FXML
+    private Button completedButton;
+
+    @FXML
     void initialize() {
         // add monster weapon types
         scopeChoiceBox.getItems().add("Citywide");
@@ -50,6 +53,7 @@ public class BucketListController {
         internationalButton.setSelected(true);
         newPOIField.setDisable(true);
         addPOIButton.setDisable(true);
+        completedButton.setDisable(true);
         updateLocationsView();
     }
 
@@ -106,8 +110,13 @@ public class BucketListController {
     }
 
     @FXML
-    void completedButtonClicked(ActionEvent event) {
-
+    void completedButtonClicked() {
+        Location l = locationsView.getSelectionModel().getSelectedItem();
+        unselectLocationAction();
+        HomeController.bucketList.removeLocation(l);
+        HomeController.visited.addLocation(l);
+        updateLocationsView();
+        statusLabel.setText("Location " + l.getName() + " transferred to your Visited journal!");
     }
 
     @FXML
@@ -147,11 +156,13 @@ public class BucketListController {
             for (POI poi: l.getPOIs()) {
                 locationPOIView.getItems().add(poi);
             }
+            completedButton.setDisable(false);
             addPOIButton.setDisable(false);
             newPOIField.setDisable(false);
         } else {
             addPOIButton.setDisable(true);
             newPOIField.setDisable(true);
+            completedButton.setDisable(true);
             statusLabel.setText("Please select a location from the list.");
         }
     }
@@ -179,6 +190,7 @@ public class BucketListController {
         locationPOIView.getItems().clear();
         addPOIButton.setDisable(true);
         newPOIField.setDisable(true);
+        completedButton.setDisable(true);
     }
 
     @FXML
