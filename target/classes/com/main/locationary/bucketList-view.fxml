@@ -8,7 +8,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -63,7 +62,6 @@
          </font>
       </RadioButton>
       <Label fx:id="statusLabel" layoutX="16.0" layoutY="627.0" text="Label" />
-      <TextArea fx:id="locationDisplay" editable="false" layoutX="31.0" layoutY="253.0" prefHeight="143.0" prefWidth="353.0" promptText="Location attributes will show up here..." />
       <Label layoutX="413.0" layoutY="28.0" text="Bucket Listed Locations">
          <font>
             <Font size="18.0" />
@@ -77,5 +75,6 @@
       <TextField fx:id="newPOIField" disable="true" layoutX="169.0" layoutY="406.0" prefHeight="26.0" prefWidth="214.0" />
       <Button fx:id="addPOIButton" disable="true" layoutX="77.0" layoutY="443.0" mnemonicParsing="false" onAction="#addNewPOIAction" text="Add New POI" />
       <Button layoutX="569.0" layoutY="443.0" mnemonicParsing="false" onAction="#unselectLocationAction" text="Unselect Location" />
+      <ListView fx:id="locationPOIView" layoutX="14.0" layoutY="253.0" onMouseClicked="#viewPOIInfoAction" prefHeight="149.0" prefWidth="386.0" />
    </children>
 </AnchorPane>
