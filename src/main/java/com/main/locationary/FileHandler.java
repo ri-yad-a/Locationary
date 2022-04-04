@@ -34,7 +34,7 @@ public class FileHandler {
      * @param bl the Bucket List object
      * @param visited the Visited object
      */
-    public static void writeToFile(String filename, BucketList bl, Visited visited) {
+    public static boolean writeToFile(String filename, BucketList bl, Visited visited) {
         // get file strings
         String blString = bl.getFileString();
         String visitedString = visited.getFileString();
@@ -47,8 +47,9 @@ public class FileHandler {
             // immediate writing
             bufferedWriter.flush();
             bufferedWriter.close();
+            return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
     }
 

@@ -1,12 +1,8 @@
 package com.main.locationary;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BucketListController {
 
@@ -35,7 +31,7 @@ public class BucketListController {
     private Label statusLabel;
 
     @FXML
-    private TextArea locationDisplay;
+    private ListView<POI> locationPOIView;
 
     @FXML
     private TextField newPOIField;
@@ -54,7 +50,7 @@ public class BucketListController {
         internationalButton.setSelected(true);
         newPOIField.setDisable(true);
         addPOIButton.setDisable(true);
-
+        updateLocationsView();
     }
 
     @FXML
@@ -146,8 +142,11 @@ public class BucketListController {
     void selectLocationAction() {
         Location l = locationsView.getSelectionModel().getSelectedItem();
         if (l != null) {
-            statusLabel.setText("Showing attributes of location " + l.getName());
-            locationDisplay.setText(l.toVerboseString());
+            statusLabel.setText("Showing POIs of location " + l.getName());
+            locationPOIView.getItems().clear();
+            for (POI poi: l.getPOIs()) {
+                locationPOIView.getItems().add(poi);
+            }
             addPOIButton.setDisable(false);
             newPOIField.setDisable(false);
         } else {
@@ -177,9 +176,18 @@ public class BucketListController {
     @FXML
     void unselectLocationAction() {
         locationsView.getSelectionModel().clearSelection();
-        locationDisplay.setText("");
+        locationPOIView.getItems().clear();
         addPOIButton.setDisable(true);
         newPOIField.setDisable(true);
+    }
+
+    @FXML
+    void viewPOIInfoAction() {
+        POI poi = locationPOIView.getSelectionModel().getSelectedItem();
+        if (poi != null) {
+            statusLabel.setText("Selected the " + poi.getName() + " POI!");
+        }
+
     }
 
 

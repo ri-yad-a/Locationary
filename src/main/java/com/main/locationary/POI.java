@@ -102,6 +102,9 @@ public class POI implements Comparable, JournalInfo {
     public boolean equals(Object o) {
         // check instance variables are equal
         POI p = (POI) o;
-        return this.name.equals(p.getName()) && this.rating == p.getRating() && this.ranking == p.getRanking();
+        if (p != null) {
+            return this.name.equals(p.getName()) && this.rating == p.getRating() && this.ranking == p.getRanking();
+        }
+        return false;
     }
 }
