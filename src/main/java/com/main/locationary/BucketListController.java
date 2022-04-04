@@ -38,6 +38,12 @@ public class BucketListController {
     private TextArea locationDisplay;
 
     @FXML
+    private TextField newPOIField;
+
+    @FXML
+    private Button addPOIButton;
+
+    @FXML
     void initialize() {
         // add monster weapon types
         scopeChoiceBox.getItems().add("Citywide");
@@ -46,6 +52,8 @@ public class BucketListController {
         citywideButton.setSelected(true);
         domesticButton.setSelected(true);
         internationalButton.setSelected(true);
+        newPOIField.setDisable(true);
+        addPOIButton.setDisable(true);
 
     }
 
@@ -76,17 +84,11 @@ public class BucketListController {
             Location bucketListLocation = null;
             if (canCreate) {
                 bucketListLocation = new Location(scope, locationName);
-                // add location to bucket list
-                boolean exists = false;
                 // check if location exists
-                for (Location location: HomeController.bucketList.getLocations()) {
-                    if (bucketListLocation.getName().equals(location.getName())) {
-                        exists = true;
-                        statusLabel.setText("Location already exists in Bucket List!");
-                    }
-                }
-                if (!exists) {
+                if (!HomeController.bucketList.hasLocation(bucketListLocation.getName())) {
                     HomeController.bucketList.addLocation(bucketListLocation);
+                } else {
+                    statusLabel.setText("Location " + bucketListLocation.getName() + " already exists in your Bucket List!");
                 }
             }
 
@@ -146,9 +148,38 @@ public class BucketListController {
         if (l != null) {
             statusLabel.setText("Showing attributes of location " + l.getName());
             locationDisplay.setText(l.toVerboseString());
+            addPOIButton.setDisable(false);
+            newPOIField.setDisable(false);
         } else {
+            addPOIButton.setDisable(true);
+            newPOIField.setDisable(true);
             statusLabel.setText("Please select a location from the list.");
         }
+    }
+
+    @FXML
+    void addNewPOIAction() {
+        String name = newPOIField.getText();
+        if (name.isBlank()) {
+            statusLabel.setText("Please enter a name for a new POI!");
+        } else {
+            Location l = locationsView.getSelectionModel().getSelectedItem();
+            if (!l.hasPOI(name)) {
+                l.addPOI(new POI(name));
+                selectLocationAction();
+                statusLabel.setText("POI " + name + " added!");
+            } else {
+                statusLabel.setText("POI " + name + " already exists in " + l.getName());
+            }
+        }
+    }
+
+    @FXML
+    void unselectLocationAction() {
+        locationsView.getSelectionModel().clearSelection();
+        locationDisplay.setText("");
+        addPOIButton.setDisable(true);
+        newPOIField.setDisable(true);
     }
 
 

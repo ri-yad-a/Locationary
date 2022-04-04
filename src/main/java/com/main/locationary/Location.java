@@ -165,20 +165,20 @@ public class Location implements Comparable, JournalInfo {
 
         if (this.rating != -1) {
             if (c) {
-                retStr += "[Citywide] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+                retStr += "Citywide Location:\n" + this.name + "(" + this.rating + ")  \n" + "POIS: " + pois;
             } else if (d) {
-                retStr += "[Domestic] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+                retStr += "Domestic Location:\n" + this.name + "(" + this.rating + ")  \n" + "POIS: " + pois;
             } else if (i) {
-                retStr += "[International] " + this.name + "(" + this.rating + ") : \t" + "POIS: " + pois;
+                retStr += "International Location:\n" + this.name + "(" + this.rating + ")  \n" + "POIS: " + pois;
             }
 
         } else {
             if (c) {
-                retStr += "[Citywide] " + this.name + ": \t" + "POIS: " + pois;
+                retStr += "Citywide Location:\n " + this.name + " \n" + "POIS: " + pois;
             } else if (d) {
-                retStr += "[Domestic] " + this.name + ": \t" + "POIS: " + pois;
+                retStr += "Domestic Location:\n" + this.name + " \n" + "POIS: " + pois;
             } else if (i) {
-                retStr += "[International] " + this.name + ": \t" + "POIS: " + pois;
+                retStr += "International Location:\n" + this.name + " \n" + "POIS: " + pois;
             }
 
         }
