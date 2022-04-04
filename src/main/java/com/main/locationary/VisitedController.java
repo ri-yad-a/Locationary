@@ -43,6 +43,15 @@ public class VisitedController {
     @FXML
     private TextArea viewLocationAttributesTextArea;
 
+    @FXML
+    private Button newPOIButton;
+
+    @FXML
+    private Label newPOILabel;
+
+    @FXML
+    private TextField newPOITextField;
+
 
     @FXML
     void initialize() {
@@ -53,6 +62,9 @@ public class VisitedController {
         citywideRadioButton.setSelected(true);
         domesticRadioButton.setSelected(true);
         internationalRadioButton.setSelected(true);
+        newPOIButton.setDisable(true);
+        newPOILabel.setDisable(true);
+        newPOITextField.setDisable(true);
 
     }
 
@@ -63,7 +75,7 @@ public class VisitedController {
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
         // declare a location object that will be added to bucket list
-        if (!locationName.equals("")) {
+        if (!locationName.isBlank()) {
             boolean canCreate = true;
             String poiInput =  POITextField.getText();
             Location.Scope scope = null;
@@ -85,20 +97,16 @@ public class VisitedController {
             if (canCreate) {
                 visitedLocation = new Location(scope, locationName);
                 // add location to visited
-                boolean exists = false;
-                for (Location location: HomeController.visited.getLocations()) {
-                    if (location.getName().equals(visitedLocation.getName())) {
-                        exists = true;
-                        statusLabel.setText("Location already exists in visited");
-                    }
-                }
-                if (!exists) {
+                if (HomeController.visited.hasLocation(visitedLocation.getName())) {
+                    statusLabel.setText("Location already exists in visited");
+                } else {
                     HomeController.visited.addLocation(visitedLocation);
                 }
+
             }
 
             // if POI text field is not empty then add POI
-            if (!poiInput.equals("") && visitedLocation != null) {
+            if (!poiInput.isBlank() && visitedLocation != null) {
                 POI poi = new POI(poiInput);
                 /*String ratingStr = ratingTextField.getText();
                 if (!ratingStr.equals("")) {
@@ -157,12 +165,50 @@ public class VisitedController {
 
         Location location = visitedListView.getSelectionModel().getSelectedItem();
         if (location != null) {
+            statusLabel.setText("Showing attributes of location " + location.getName());
             viewLocationAttributesTextArea.setText(location.toVerboseString());
+            newPOIButton.setDisable(false);
+            newPOITextField.setDisable(false);
         } else {
-            statusLabel.setText("Please select a location from the list");
+            newPOIButton.setDisable(true);
+            newPOITextField.setDisable(true);
+            statusLabel.setText("Please select a location from the list.");
         }
 
 
+    }
+
+    @FXML
+    void newPOIButtonClicked() {
+
+        Location selectedLocation = visitedListView.getSelectionModel().getSelectedItem();
+        String poi = newPOITextField.getText();
+
+        for (Location location: HomeController.visited.getLocations()) {
+            if (location.getName().equals(selectedLocation.getName())) {
+                if (!poi.isBlank()) {
+                    if (location.hasPOI(poi)) {
+                        statusLabel.setText("POI already exists in this location");
+                    } else {
+                        location.addPOI(new POI(poi));
+                        viewLocationInformationClicked();
+                    }
+                } else {
+                    statusLabel.setText("Please enter a name for a new POI");
+                }
+
+            }
+        }
+
+
+    }
+
+    @FXML
+    void unselectLocationAction() {
+        visitedListView.getSelectionModel().clearSelection();
+        viewLocationAttributesTextArea.setText("");
+        newPOIButton.setDisable(true);
+        newPOITextField.setDisable(true);
     }
 
 
