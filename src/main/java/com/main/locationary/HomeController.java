@@ -30,7 +30,7 @@ public class HomeController {
                 bucketListView.getItems().add(location);
             }
             // if the bucketlist has more, output the last 5
-        } else if (blSize > 5) {
+        } else {
             int startIdx = blSize - 5;
             for (int i = startIdx; i < blSize; i++) {
                 bucketListView.getItems().add(bucketListLocations.get(i));
@@ -45,9 +45,7 @@ public class HomeController {
             for (Location location: visitedLocations) {
                 visitedView.getItems().add(location);
             }
-        }
-
-        if (vSize > 5) {
+        } else {
             // output the 5 most highly rated locations
         }
 
