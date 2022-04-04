@@ -108,19 +108,18 @@ public class VisitedController {
             // if POI text field is not empty then add POI
             if (!poiInput.isBlank() && visitedLocation != null) {
                 POI poi = new POI(poiInput);
-                /*String ratingStr = ratingTextField.getText();
-                if (!ratingStr.equals("")) {
+
+                String ratingStr = ratingTextField.getText();
+                if (!ratingStr.isBlank()) {
                     try {
                         double rating = Double.parseDouble(ratingStr);
                         poi.setRating(rating);
                     } catch (NumberFormatException e) {
                         statusLabel.setText("Please enter a value between 1 and 5 for location rating");
                     }
-                }*/
+                }
+
                 // add poi to the location
-
-
-
                 visitedLocation.addPOI(poi);
             }
 
