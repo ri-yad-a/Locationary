@@ -74,7 +74,7 @@ public class Visited extends Journal{
      * Returns the top three locations, according to Rating
      * @return an array of Locations, size 3, with the top 3 locations
      */
-    public Location[] getTopThree() {
+    public Location[] getTopFive() {
         // create copy and sort, invokes compareTo
         ArrayList<Location> copy = new ArrayList<>();
         for (Location l: this.locations) {
@@ -82,9 +82,9 @@ public class Visited extends Journal{
         }
         Collections.sort(copy, Collections.reverseOrder());
         // init return variable
-        Location[] top = new Location[3];
+        Location[] top = new Location[5];
         // add top 3
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             if (i < copy.size()) {
                 top[i] = copy.get(i);
             }

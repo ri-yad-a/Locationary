@@ -228,6 +228,7 @@ public class VisitedController {
         try {
             POI selectedPOI = displayLocationPOIS.getSelectionModel().getSelectedItem();
             selectedPOI.setRating(roundedRating);
+            selectedLocation.setRating(0);
             updatePOIDisplay();
         } catch (NumberFormatException e) {
             statusLabel.setText("Please enter a value between 1 and 5 for location rating");
