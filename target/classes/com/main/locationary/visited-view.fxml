@@ -8,14 +8,14 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.VisitedController">
    <children>
-      <Button layoutX="162.0" layoutY="286.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
+      <Button layoutX="162.0" layoutY="152.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
       <TextField fx:id="locationNameTextField" layoutX="48.0" layoutY="113.0" prefHeight="26.0" prefWidth="86.0" />
       <TextField fx:id="POITextField" layoutX="273.0" layoutY="113.0" prefHeight="26.0" prefWidth="86.0" />
       <Label layoutX="190.0" layoutY="95.0" text="Scope" />
@@ -41,10 +41,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label layoutX="56.0" layoutY="149.0" text="Rating" />
-      <TextField fx:id="ratingTextField" layoutX="105.0" layoutY="144.0" prefHeight="26.0" prefWidth="86.0" />
-      <Label layoutX="54.0" layoutY="183.0" text="Review" />
-      <TextArea fx:id="reviewTextArea" layoutX="106.0" layoutY="183.0" prefHeight="90.0" prefWidth="200.0" />
+      <Label fx:id="ratingLabel" layoutX="88.0" layoutY="443.0" text="Rating" />
       <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
       <ListView fx:id="visitedListView" layoutX="423.0" layoutY="63.0" onMouseClicked="#viewLocationInformationClicked" prefHeight="289.0" prefWidth="391.0" />
       <RadioButton fx:id="citywideRadioButton" layoutX="423.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateView" text="Citywide">
@@ -63,10 +60,12 @@
          </font>
       </RadioButton>
       <Label fx:id="statusLabel" layoutX="41.0" layoutY="611.0" text="Status Label" />
-      <TextArea fx:id="viewLocationAttributesTextArea" layoutX="73.0" layoutY="318.0" prefHeight="147.0" prefWidth="284.0" promptText="Location attributes will show here..." />
-      <TextField fx:id="newPOITextField" layoutX="211.0" layoutY="490.0" prefHeight="26.0" prefWidth="86.0" />
-      <Label fx:id="newPOILabel" layoutX="78.0" layoutY="495.0" text="Name of POI to add:" />
-      <Button fx:id="newPOIButton" layoutX="143.0" layoutY="521.0" mnemonicParsing="false" onAction="#newPOIButtonClicked" text="Add New POI" />
+      <TextField fx:id="newPOITextField" layoutX="205.0" layoutY="348.0" prefHeight="26.0" prefWidth="86.0" />
+      <Label fx:id="newPOILabel" layoutX="78.0" layoutY="353.0" text="Name of POI to add:" />
+      <Button fx:id="newPOIButton" layoutX="146.0" layoutY="394.0" mnemonicParsing="false" onAction="#newPOIButtonClicked" text="Add New POI" />
       <Button layoutX="554.0" layoutY="465.0" mnemonicParsing="false" onAction="#unselectLocationAction" text="Unselect" />
+      <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="145.0" layoutY="443.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" showTickLabels="true" />
+      <Button fx:id="addRatingButton" layoutX="147.0" layoutY="491.0" mnemonicParsing="false" onAction="#addRatingButtonClicked" text="Add Rating" />
+      <ListView fx:id="displayLocationPOIS" layoutX="95.0" layoutY="208.0" onMouseClicked="#poiDisplayClicked" prefHeight="121.0" prefWidth="254.0" />
    </children>
 </AnchorPane>

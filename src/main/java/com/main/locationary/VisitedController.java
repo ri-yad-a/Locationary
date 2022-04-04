@@ -41,7 +41,7 @@ public class VisitedController {
     private Label statusLabel;
 
     @FXML
-    private TextArea viewLocationAttributesTextArea;
+    private ListView<POI> displayLocationPOIS;
 
     @FXML
     private Button newPOIButton;
@@ -51,6 +51,15 @@ public class VisitedController {
 
     @FXML
     private TextField newPOITextField;
+
+    @FXML
+    private Label ratingLabel;
+
+    @FXML
+    private Slider ratingSlider;
+
+    @FXML
+    private Button addRatingButton;
 
 
     @FXML
@@ -65,6 +74,10 @@ public class VisitedController {
         newPOIButton.setDisable(true);
         newPOILabel.setDisable(true);
         newPOITextField.setDisable(true);
+        ratingSlider.setDisable(true);
+        ratingLabel.setDisable(true);
+        addRatingButton.setDisable(true);
+        updateView();
 
     }
 
@@ -108,17 +121,6 @@ public class VisitedController {
             // if POI text field is not empty then add POI
             if (!poiInput.isBlank() && visitedLocation != null) {
                 POI poi = new POI(poiInput);
-
-                String ratingStr = ratingTextField.getText();
-                if (!ratingStr.isBlank()) {
-                    try {
-                        double rating = Double.parseDouble(ratingStr);
-                        poi.setRating(rating);
-                    } catch (NumberFormatException e) {
-                        statusLabel.setText("Please enter a value between 1 and 5 for location rating");
-                    }
-                }
-
                 // add poi to the location
                 visitedLocation.addPOI(poi);
             }
@@ -163,9 +165,12 @@ public class VisitedController {
     void viewLocationInformationClicked() {
 
         Location location = visitedListView.getSelectionModel().getSelectedItem();
+        displayLocationPOIS.getItems().clear();
         if (location != null) {
-            statusLabel.setText("Showing attributes of location " + location.getName());
-            viewLocationAttributesTextArea.setText(location.toVerboseString());
+            statusLabel.setText("Showing POIs of location " + location.getName());
+            for (POI poi: location.getPOIs()) {
+                displayLocationPOIS.getItems().add(poi);
+            }
             newPOIButton.setDisable(false);
             newPOITextField.setDisable(false);
         } else {
@@ -198,14 +203,38 @@ public class VisitedController {
 
             }
         }
+    }
+
+    @FXML
+    void poiDisplayClicked() {
+
+        POI selectedPOI = displayLocationPOIS.getSelectionModel().getSelectedItem();
+
+        ratingSlider.setDisable(false);
+        ratingLabel.setDisable(false);
+        addRatingButton.setDisable(false);
 
 
     }
 
     @FXML
+    void addRatingButtonClicked() {
+
+        Location selectedLocation = visitedListView.getSelectionModel().getSelectedItem();
+        double rating = ratingSlider.getValue();
+        try {
+            POI selectedPOI = displayLocationPOIS.getSelectionModel().getSelectedItem();
+            selectedPOI.setRating(rating);
+        } catch (NumberFormatException e) {
+            statusLabel.setText("Please enter a value between 1 and 5 for location rating");
+        }
+    }
+
+
+    @FXML
     void unselectLocationAction() {
         visitedListView.getSelectionModel().clearSelection();
-        viewLocationAttributesTextArea.setText("");
+        displayLocationPOIS.getItems().clear();
         newPOIButton.setDisable(true);
         newPOITextField.setDisable(true);
     }
