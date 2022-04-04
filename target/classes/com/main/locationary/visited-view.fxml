@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,12 +27,12 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadFileAction" text="Load" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAsAction" text="Save As" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#quitAction" text="Quit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -67,6 +68,6 @@
       <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="571.0" layoutY="435.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" onDragDetected="#updateRatingNumberLabel" onMouseClicked="#updateRatingNumberLabel" showTickLabels="true" />
       <Button fx:id="addRatingButton" layoutX="551.0" layoutY="496.0" mnemonicParsing="false" onAction="#addRatingButtonClicked" text="Add Rating" />
       <ListView fx:id="displayLocationPOIS" layoutX="462.0" layoutY="233.0" onMouseClicked="#poiDisplayClicked" prefHeight="121.0" prefWidth="254.0" />
-      <Label fx:id="ratingNumberLabel" layoutX="302.0" layoutY="443.0" />
+      <Label fx:id="ratingNumberLabel" layoutX="728.0" layoutY="433.0" prefHeight="18.0" prefWidth="19.0" />
    </children>
 </AnchorPane>

@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.text.NumberFormat;
 
 public class VisitedController {
@@ -256,6 +259,93 @@ public class VisitedController {
         newPOIButton.setDisable(true);
         newPOITextField.setDisable(true);
     }
+
+    @FXML
+    void loadFileAction() {
+        // open file chooser object
+        final FileChooser fileChooser = new FileChooser();
+        // set initial directory
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+        // get file from file chooser in new window
+        File fileLoad = fileChooser.showOpenDialog(new Stage());
+        // if the file is not null, load world
+        if (fileLoad != null) {
+            FileHandler.setFile(fileLoad);
+            Journal[] j = FileHandler.getFromFile();
+            if (j != null) {
+                HomeController.bucketList = (BucketList) j[0];
+                HomeController.visited = (Visited) j[1];
+                statusLabel.setTextFill(Color.BLACK);
+                statusLabel.setText("Your BucketList and Visited journal have been loaded from " + fileLoad.getName());
+                updateView();
+            } else {
+                // if null, error has occurred and file is not acceptable
+                // set right status to fail message
+                statusLabel.setTextFill(Color.RED);
+                statusLabel.setText("File is not in the correct format!");
+            }
+        } else {
+            // set right status to fail message
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("File not chosen.");
+        }
+    }
+
+    @FXML
+    void saveAction() {
+        // write to default file
+        boolean b = FileHandler.writeToFile("data.csv", HomeController.bucketList, HomeController.visited);
+        if (b) {
+            // set right status to success message
+            statusLabel.setTextFill(Color.BLACK);
+            statusLabel.setText("Data saved to data.csv");
+        } else {
+            // set right status to fail message
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("Unable to write to default file, data.csv!");
+        }
+    }
+
+    @FXML
+    void saveAsAction() {
+        // setup file chooser
+        final FileChooser fileChooser = new FileChooser();
+        // set initial directory and filename
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+        fileChooser.setInitialFileName("data.csv");
+        // get file from file chooser in a new window
+        File fileSave = fileChooser.showSaveDialog(new Stage());
+        // null occurs when user does not choose any file to save to
+        if (fileSave != null) {
+            // save to specifed file
+            boolean b = FileHandler.writeToFile(fileSave.getPath(), HomeController.bucketList, HomeController.visited);
+            if (b) {
+                // set right status to success message
+                statusLabel.setTextFill(Color.BLACK);
+                statusLabel.setText("Data saved to " + fileSave.getName());
+            } else {
+                // set right status to fail message
+                statusLabel.setTextFill(Color.RED);
+                statusLabel.setText("Data could not be saved to specified file!");
+            }
+
+        } else {
+            // set right status message to fail message
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("File not chosen!");
+        }
+    }
+
+    /**
+     * Quits program
+     */
+    @FXML
+    void quitAction() {
+        System.exit(0);
+    }
+
 
 
 
