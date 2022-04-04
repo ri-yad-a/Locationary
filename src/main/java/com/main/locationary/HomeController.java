@@ -2,8 +2,14 @@ package com.main.locationary;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class HomeController {
@@ -16,6 +22,9 @@ public class HomeController {
 
     @FXML
     private ListView<Location> visitedView;
+
+    @FXML
+    private Label statusLabel;
 
 
     @FXML
@@ -62,6 +71,55 @@ public class HomeController {
     void viewEditVisitedButtonClicked(ActionEvent event) {
         Main.switchScreen("visited-view.fxml");
 
+    }
+
+    @FXML
+    void loadFileAction() {
+        // open file chooser object
+        final FileChooser fileChooser = new FileChooser();
+        // set initial directory
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+        // get file from file chooser in new window
+        File fileLoad = fileChooser.showOpenDialog(new Stage());
+        // if the file is not null, load world
+        if (fileLoad != null) {
+            FileHandler.setFile(fileLoad);
+            Journal[] j = FileHandler.getFromFile();
+            if (j != null) {
+                bucketList = (BucketList) j[0];
+                visited = (Visited) j[1];
+                statusLabel.setTextFill(Color.BLACK);
+                statusLabel.setText("Your BucketList and Visited journal have been loaded from " + fileLoad.getName());
+            } else {
+                // if null, error has occurred and file is not acceptable
+                // set right status to fail message
+                statusLabel.setTextFill(Color.RED);
+                statusLabel.setText("File is not in the correct format!");
+            }
+        } else {
+            // set right status to fail message
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("File not chosen.");
+        }
+    }
+
+    @FXML
+    void saveAction() {
+
+    }
+
+    @FXML
+    void saveAsAction() {
+
+    }
+
+    /**
+     * Quits program
+     */
+    @FXML
+    void quitAction() {
+        System.exit(0);
     }
 
 

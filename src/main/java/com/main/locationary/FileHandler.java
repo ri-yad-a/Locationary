@@ -121,8 +121,8 @@ public class FileHandler {
             journals[0] = newBL;
             journals[1] = newVisit;
             sc.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            journals = null;
         }
         // return array
         return journals;

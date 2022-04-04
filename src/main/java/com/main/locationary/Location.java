@@ -174,7 +174,7 @@ public class Location implements Comparable, JournalInfo {
 
         } else {
             if (c) {
-                retStr += "Citywide Location:\n " + this.name + " \n" + "POIS: " + pois;
+                retStr += "Citywide Location:\n" + this.name + " \n" + "POIS: " + pois;
             } else if (d) {
                 retStr += "Domestic Location:\n" + this.name + " \n" + "POIS: " + pois;
             } else if (i) {
