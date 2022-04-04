@@ -165,7 +165,7 @@ public class VisitedController {
     }
 
     @FXML
-    void viewLocationInformationClicked() {
+    void updatePOIDisplay() {
 
         Location location = visitedListView.getSelectionModel().getSelectedItem();
         displayLocationPOIS.getItems().clear();
@@ -198,7 +198,7 @@ public class VisitedController {
                         statusLabel.setText("POI already exists in this location");
                     } else {
                         location.addPOI(new POI(poi));
-                        viewLocationInformationClicked();
+                        updatePOIDisplay();
                     }
                 } else {
                     statusLabel.setText("Please enter a name for a new POI");
@@ -223,17 +223,27 @@ public class VisitedController {
 
         Location selectedLocation = visitedListView.getSelectionModel().getSelectedItem();
         double rating = ratingSlider.getValue();
+        String roundedRatingStr = String.format("%.2g%n", rating);
+        double roundedRating = Double.parseDouble(roundedRatingStr);
         try {
             POI selectedPOI = displayLocationPOIS.getSelectionModel().getSelectedItem();
-            selectedPOI.setRating(rating);
+            selectedPOI.setRating(roundedRating);
+            updatePOIDisplay();
         } catch (NumberFormatException e) {
             statusLabel.setText("Please enter a value between 1 and 5 for location rating");
+        } catch (NullPointerException e) {
+            statusLabel.setText("Please select a POI to add a rating to");
         }
+
+
+
     }
 
     @FXML
     void updateRatingNumberLabel() {
-        ratingNumberLabel.setText("" + Math.round((ratingSlider.getValue() * 100.0)/100.0));
+        double rating = ratingSlider.getValue();
+        String roundedRatingStr = String.format("%.2g%n", rating);
+        ratingNumberLabel.setText("" + roundedRatingStr);
 
     }
 

@@ -43,7 +43,7 @@
       </MenuBar>
       <Label fx:id="ratingLabel" layoutX="88.0" layoutY="443.0" text="Rating" />
       <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
-      <ListView fx:id="visitedListView" layoutX="423.0" layoutY="63.0" onMouseClicked="#viewLocationInformationClicked" prefHeight="289.0" prefWidth="391.0" />
+      <ListView fx:id="visitedListView" layoutX="423.0" layoutY="63.0" onMouseClicked="#updatePOIDisplay" prefHeight="289.0" prefWidth="391.0" />
       <RadioButton fx:id="citywideRadioButton" layoutX="423.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateView" text="Citywide">
          <font>
             <Font size="20.0" />
