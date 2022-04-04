@@ -233,7 +233,7 @@ public class DemoRunner {
                    outputGeneral(bucketList, visited);
                 } else if (choice.equals("8")) {
                     // gets top three
-                    Location[] top = visited.getTopThree();
+                    Location[] top = null;
                     if (top[0] != null) {
                         String toPrint = "";
                         for (Location l: top) {

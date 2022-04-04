@@ -40,6 +40,8 @@ public class HomeController {
     }
 
     void updateViews() {
+        bucketListView.getItems().clear();
+        visitedView.getItems().clear();
 
         // if bucketlist has less than or equal to 5 locations
         // then output all those locations to the bucket list view
@@ -67,6 +69,10 @@ public class HomeController {
             }
         } else {
             // output the 5 most highly rated locations
+            Location[] top = visited.getTopFive();
+            for (int i = 0; i < top.length; i++){
+                visitedView.getItems().add(top[i]);
+            }
         }
 
 
@@ -102,6 +108,7 @@ public class HomeController {
                 visited = (Visited) j[1];
                 statusLabel.setTextFill(Color.BLACK);
                 statusLabel.setText("Your BucketList and Visited journal have been loaded from " + fileLoad.getName());
+                updateViews();
             } else {
                 // if null, error has occurred and file is not acceptable
                 // set right status to fail message
