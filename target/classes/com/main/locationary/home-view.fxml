@@ -13,12 +13,11 @@
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.HomeController">
    <AnchorPane prefHeight="650.0" prefWidth="850.0">
       <children>
-         <Button layoutX="138.0" layoutY="416.0" mnemonicParsing="false" onAction="#viewEditBucketListButtonClicked" text="View/Edit Bucket List" />
-         <Button layoutX="482.0" layoutY="415.0" mnemonicParsing="false" onAction="#viewEditVisitedButtonClicked" prefHeight="26.0" prefWidth="116.0" text="View/Edit Visited" />
-         <Button layoutX="321.0" layoutY="416.0" mnemonicParsing="false" onAction="#viewAttributesButtonClicked" text="View Attributes" />
+         <Button layoutX="175.0" layoutY="415.0" mnemonicParsing="false" onAction="#viewEditBucketListButtonClicked" text="View/Edit Bucket List" />
+         <Button layoutX="540.0" layoutY="414.0" mnemonicParsing="false" onAction="#viewEditVisitedButtonClicked" prefHeight="26.0" prefWidth="116.0" text="View/Edit Visited" />
          <Label layoutX="332.0" layoutY="60.0" text="Welcome to Locationary!" />
-         <ListView fx:id="bucketListView" layoutX="78.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" />
-         <ListView fx:id="visitedView" layoutX="462.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" />
+         <ListView fx:id="bucketListView" layoutX="138.0" layoutY="178.0" onMouseClicked="#selectBucketListLocationAction" prefHeight="200.0" prefWidth="200.0" />
+         <ListView fx:id="visitedView" layoutX="498.0" layoutY="178.0" onMouseClicked="#selectVisitedLocationAction" prefHeight="200.0" prefWidth="200.0" />
          <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="850.0">
            <menus>
              <Menu mnemonicParsing="false" text="File">
@@ -33,12 +32,13 @@
              </Menu>
              <Menu mnemonicParsing="false" text="Help">
                <items>
-                 <MenuItem mnemonicParsing="false" text="About" />
+                 <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="About" />
                </items>
              </Menu>
            </menus>
          </MenuBar>
          <Label fx:id="statusLabel" layoutX="14.0" layoutY="619.0" text="Label" />
+         <Button fx:id="attributesButton" disable="true" layoutX="376.0" layoutY="414.0" mnemonicParsing="false" onAction="#viewAttributesAction" text="View Attributes" />
       </children>
    </AnchorPane>
 </VBox>
