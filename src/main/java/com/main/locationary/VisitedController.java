@@ -233,7 +233,7 @@ public class VisitedController {
 
     @FXML
     void updateRatingNumberLabel() {
-        ratingNumberLabel.setText("" + ratingSlider.getValue());
+        ratingNumberLabel.setText("" + Math.round((ratingSlider.getValue() * 100.0)/100.0));
 
     }
 
