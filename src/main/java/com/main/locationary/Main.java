@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         mainStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 850, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         mainStage.setTitle("Locationary - Demo 3 Release");
         mainStage.setScene(scene);
         mainStage.show();
@@ -40,7 +40,7 @@ public class Main extends Application {
     public static void switchScreen(String filename) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(filename));
-            Scene scene = new Scene(fxmlLoader.load(), 850, 650);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 600);
             mainStage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
