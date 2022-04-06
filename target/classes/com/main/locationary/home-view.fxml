@@ -22,7 +22,7 @@
             </font></Label>
          <ListView fx:id="bucketListView" layoutX="50.0" layoutY="150.0" onMouseClicked="#selectBucketListLocationAction" prefHeight="200.0" prefWidth="200.0" styleClass="generalField" />
          <ListView fx:id="visitedView" layoutX="449.0" layoutY="150.0" onMouseClicked="#selectVisitedLocationAction" prefHeight="200.0" prefWidth="200.0" styleClass="generalField" />
-         <MenuBar layoutY="1.0" prefHeight="28.0" prefWidth="700.0" styleClass="menuBar">
+         <MenuBar prefHeight="28.0" prefWidth="700.0" styleClass="menuBar">
            <menus>
              <Menu mnemonicParsing="false" text="File">
                <items>
@@ -37,6 +37,7 @@
              <Menu mnemonicParsing="false" text="Help">
                <items>
                  <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="About" />
+                     <MenuItem mnemonicParsing="false" onAction="#instructionAction" text="Instructions" />
                </items>
              </Menu>
            </menus>

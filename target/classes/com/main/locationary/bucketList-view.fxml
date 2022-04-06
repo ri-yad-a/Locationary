@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@style-sheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.BucketListController">
+<AnchorPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" styleClass="backgroundPane" stylesheets="@style-sheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.BucketListController">
    <children>
       <Button layoutX="136.0" layoutY="137.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" prefHeight="26.0" prefWidth="106.0" styleClass="generalButton" text="Add Location" />
       <TextField fx:id="locationNameTextField" layoutX="13.0" layoutY="104.0" prefHeight="26.0" prefWidth="119.0" styleClass="generalField" />
@@ -32,7 +32,7 @@
          </font></Label>
       <TextField fx:id="POITextField" layoutX="244.0" layoutY="104.0" prefHeight="26.0" prefWidth="119.0" styleClass="generalField" />
       <Button fx:id="completedButton" disable="true" layoutX="385.0" layoutY="407.0" mnemonicParsing="false" onAction="#completedButtonClicked" styleClass="generalButton" text="Completed" />
-      <MenuBar prefHeight="26.0" prefWidth="700.0">
+      <MenuBar prefHeight="26.0" prefWidth="700.0" styleClass="menuBar">
         <menus>
           <Menu mnemonicParsing="false" text="File">
                <items>
@@ -47,6 +47,7 @@
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#instructionAction" text="Instructions" />
             </items>
           </Menu>
         </menus>

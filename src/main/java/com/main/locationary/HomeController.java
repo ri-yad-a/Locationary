@@ -39,6 +39,18 @@ public class HomeController {
         updateViews();
     }
 
+    @FXML
+    void instructionAction() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("How to use Locationary");
+        alert.setHeaderText("How to navigate the Homepage");
+        alert.setContentText("Use the File menu option to load, save, and save data as a .csv file, as well as to quit the program.\n" +
+                "Use the Help menu option to view information about the program and instructions.\nFive locations from your Bucket List and Visited journal show up on this" +
+                " screen when you add the.\nClick \"View Attributes\" to see the information specific to a certian location.\nFinally, use the other buttons to navigate to" +
+                " other features of the program.");
+        alert.show();
+    }
+
     void updateViews() {
         bucketListView.getItems().clear();
         visitedView.getItems().clear();

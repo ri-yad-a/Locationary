@@ -63,6 +63,17 @@ public class BucketListController {
     }
 
     @FXML
+    void instructionAction() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("How to use Locationary");
+        alert.setHeaderText("How to use your Bucket List");
+        alert.setContentText("Add locations to your Bucket List by specifying a location name, scope, and optionally a POI name and clicking the \"Add Location\"" +
+                "button.\nYou can then view all your added locations in the pane.\nFilter these locations by scope using the radio buttons below.\nSelect a location to" +
+                " see its POIs by name. Finally, add a POI by entering a name and clicking \"Add New POI.\"\nUse the Locationary button to go back to the Homepage.");
+        alert.show();
+    }
+
+    @FXML
     void addLocationButtonClicked(ActionEvent event) {
 
         // get the user inputted location name

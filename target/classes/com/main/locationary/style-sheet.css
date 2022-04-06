@@ -23,9 +23,10 @@ Authors: Gaurav Ashar, Riyad Abdullayev
 }
 
 .menuBar {
-    -fx-background-color: #FFFF4E;
+    /*-fx-background-color: #4e8efc;*/
+    -fx-background-color: #45b5ff;
 }
 
 .backgroundPane {
-    -fx-background-color: #FFFFF1;
+    -fx-background-color: #fffdf5;
 }
