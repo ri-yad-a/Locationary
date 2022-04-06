@@ -3,6 +3,7 @@ package com.main.locationary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -339,6 +340,35 @@ public class VisitedController {
     @FXML
     void quitAction() {
         System.exit(0);
+    }
+
+
+    @FXML
+    void instructionsClicked() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("How to use Locationary");
+        alert.setHeaderText("How to use your visited journal");
+        alert.setContentText("The 'Location Name', 'Scope', and 'POI' fields are used to add locations to your visited locations.\n" +
+                "Once you have added locations to your visited journal, you can choose to display any arrangement " +
+                "of your Citywide, Domestic and International locations.\n" +
+                "You can also click on any of the locations to view the POIS" +
+                " (Points of interest) that you have added to that location. " +
+                "From there you are able to add new POIS to the location or add ratings to the existing POIS");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.show();
+    }
+
+    /**
+     * View information
+     */
+    @FXML
+    void aboutAction() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About Locationary");
+        alert.setHeaderText("Locationary");
+        alert.setContentText("Locationary is a traveller's journal that keeps track of places one wants to travel to, and places that travellers have already been. " +
+                "Authors:\nGaurav Ashar (gaurav.ashar@ucalgary.ca)\nRiyad Abdullayev (riyad.abdullayev@ucalgary.ca)");
+        alert.show();
     }
 
 

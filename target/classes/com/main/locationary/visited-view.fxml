@@ -32,7 +32,7 @@
             <Font size="14.0" />
          </font></Label>
       <ChoiceBox fx:id="scopeChoiceBox" layoutX="134.0" layoutY="102.0" prefHeight="26.0" prefWidth="106.0" styleClass="generalButton" />
-      <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="700.0" styleClass="menuBar">
+      <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="707.0" styleClass="menuBar">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -46,7 +46,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#instructionsClicked" text="Instructions" />
             </items>
           </Menu>
         </menus>
