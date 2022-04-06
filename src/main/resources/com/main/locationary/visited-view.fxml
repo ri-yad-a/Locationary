@@ -14,16 +14,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.VisitedController">
+<AnchorPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@style-sheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.VisitedController">
    <children>
-      <Button layoutX="189.0" layoutY="187.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
-      <TextField fx:id="locationNameTextField" layoutX="39.0" layoutY="138.0" prefHeight="26.0" prefWidth="112.0" />
-      <TextField fx:id="POITextField" layoutX="333.0" layoutY="138.0" prefHeight="26.0" prefWidth="98.0" />
-      <Label layoutX="173.0" layoutY="117.0" text="Scope" />
-      <Label layoutX="37.0" layoutY="117.0" text="Location Name" />
-      <Label layoutX="333.0" layoutY="117.0" text="POI" />
-      <ChoiceBox fx:id="scopeChoiceBox" layoutX="173.0" layoutY="138.0" prefHeight="26.0" prefWidth="132.0" />
-      <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="850.0">
+      <Button layoutX="133.0" layoutY="139.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" styleClass="generalButton" text="Add Location" />
+      <TextField fx:id="locationNameTextField" layoutX="14.0" layoutY="102.0" prefHeight="26.0" prefWidth="112.0" styleClass="generalField" />
+      <TextField fx:id="POITextField" layoutX="252.0" layoutY="102.0" prefHeight="26.0" prefWidth="106.0" styleClass="generalField" />
+      <Label layoutX="166.0" layoutY="84.0" styleClass="generalLabel" text="Scope">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="84.0" styleClass="generalLabel" text="Location Name">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="294.0" layoutY="85.0" styleClass="generalLabel" text="POI">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ChoiceBox fx:id="scopeChoiceBox" layoutX="134.0" layoutY="102.0" prefHeight="26.0" prefWidth="106.0" styleClass="generalButton" />
+      <MenuBar layoutX="-2.0" prefHeight="26.0" prefWidth="700.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -42,32 +51,53 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="ratingLabel" layoutX="510.0" layoutY="442.0" text="Rating" />
-      <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" />
-      <ListView fx:id="visitedListView" layoutX="37.0" layoutY="233.0" onMouseClicked="#updatePOIDisplay" prefHeight="218.0" prefWidth="391.0" />
-      <RadioButton fx:id="citywideRadioButton" layoutX="48.0" layoutY="467.0" mnemonicParsing="false" onAction="#updateView" text="Citywide">
+      <Label fx:id="ratingLabel" layoutX="384.0" layoutY="391.0" styleClass="generalLabel" text="Rating">
          <font>
-            <Font size="20.0" />
+            <Font size="14.0" />
+         </font></Label>
+      <Button layoutY="26.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" styleClass="generalButton" text="Locationary" />
+      <ListView fx:id="visitedListView" layoutX="11.0" layoutY="185.0" onMouseClicked="#updatePOIDisplay" prefHeight="250.0" prefWidth="350.0" styleClass="generalField" />
+      <RadioButton fx:id="citywideRadioButton" layoutX="19.0" layoutY="440.0" mnemonicParsing="false" onAction="#updateView" styleClass="generalLabel" text="Citywide">
+         <font>
+            <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="domesticRadioButton" layoutX="173.0" layoutY="467.0" mnemonicParsing="false" onAction="#updateView" text="Domestic">
+      <RadioButton fx:id="domesticRadioButton" layoutX="134.0" layoutY="440.0" mnemonicParsing="false" onAction="#updateView" styleClass="generalLabel" text="Domestic">
          <font>
-            <Font size="20.0" />
+            <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="internationalRadioButton" layoutX="302.0" layoutY="467.0" mnemonicParsing="false" onAction="#updateView" text="International">
+      <RadioButton fx:id="internationalRadioButton" layoutX="246.0" layoutY="440.0" mnemonicParsing="false" onAction="#updateView" styleClass="generalLabel" text="International">
          <font>
-            <Font size="20.0" />
+            <Font size="14.0" />
          </font>
       </RadioButton>
-      <Label fx:id="statusLabel" layoutX="7.0" layoutY="618.0" text="Status Label" />
-      <TextField fx:id="newPOITextField" layoutX="589.0" layoutY="358.0" prefHeight="26.0" prefWidth="86.0" />
-      <Label fx:id="newPOILabel" layoutX="462.0" layoutY="362.0" text="Name of POI to add:" />
-      <Button fx:id="newPOIButton" layoutX="527.0" layoutY="395.0" mnemonicParsing="false" onAction="#newPOIButtonClicked" text="Add New POI" />
-      <Button layoutX="193.0" layoutY="509.0" mnemonicParsing="false" onAction="#unselectLocationAction" text="Unselect" />
-      <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="571.0" layoutY="435.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" onDragDetected="#updateRatingNumberLabel" onMouseClicked="#updateRatingNumberLabel" showTickLabels="true" />
-      <Button fx:id="addRatingButton" layoutX="551.0" layoutY="496.0" mnemonicParsing="false" onAction="#addRatingButtonClicked" text="Add Rating" />
-      <ListView fx:id="displayLocationPOIS" layoutX="462.0" layoutY="233.0" onMouseClicked="#poiDisplayClicked" prefHeight="121.0" prefWidth="254.0" />
+      <Label fx:id="statusLabel" layoutX="14.0" layoutY="475.0" styleClass="generalLabel" text="Status Label" />
+      <TextField fx:id="newPOITextField" layoutX="384.0" layoutY="328.0" prefHeight="26.0" prefWidth="200.0" />
+      <Label fx:id="newPOILabel" layoutX="381.0" layoutY="310.0" styleClass="generalLabel" text="Name of POI to add:">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="newPOIButton" layoutX="384.0" layoutY="360.0" mnemonicParsing="false" onAction="#newPOIButtonClicked" styleClass="generalButton" text="Add New POI" />
+      <Button layoutX="557.0" layoutY="360.0" mnemonicParsing="false" onAction="#unselectLocationAction" styleClass="generalButton" text="Unselect Location" />
+      <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="384.0" layoutY="409.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" onDragDetected="#updateRatingNumberLabel" onMouseClicked="#updateRatingNumberLabel" showTickLabels="true" />
+      <Button fx:id="addRatingButton" layoutX="388.0" layoutY="440.0" mnemonicParsing="false" onAction="#addRatingButtonClicked" styleClass="generalButton" text="Add Rating" />
+      <ListView fx:id="displayLocationPOIS" layoutX="381.0" layoutY="90.0" onMouseClicked="#poiDisplayClicked" prefHeight="219.0" prefWidth="300.0" styleClass="generalField" />
       <Label fx:id="ratingNumberLabel" layoutX="728.0" layoutY="433.0" prefHeight="18.0" prefWidth="19.0" />
+      <Label layoutX="17.0" layoutY="60.0" styleClass="generalLabel" text="Add New Location">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="13.0" layoutY="162.0" styleClass="generalLabel" text="Visited Locations">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="60.0" styleClass="generalLabel" text="Location POIs">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
