@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class HomeController {
 
+    // container objects used in BucketList and Visited Controllers
     public static BucketList bucketList = new BucketList();
     public static Visited visited = new Visited();
 
@@ -39,6 +40,9 @@ public class HomeController {
         updateViews();
     }
 
+    /**
+     * Show instructions
+     */
     @FXML
     void instructionAction() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -91,17 +95,28 @@ public class HomeController {
 
     }
 
+    /**
+     * Go to Bucket List view
+     */
     @FXML
     void viewEditBucketListButtonClicked() {
         Main.switchScreen("bucketList-view.fxml");
     }
 
+
+    /**
+     * Go to Visited View
+     * @param event
+     */
     @FXML
     void viewEditVisitedButtonClicked(ActionEvent event) {
         Main.switchScreen("visited-view.fxml");
 
     }
 
+    /**
+     * Load a file to program
+     */
     @FXML
     void loadFileAction() {
         // open file chooser object
@@ -134,6 +149,9 @@ public class HomeController {
         }
     }
 
+    /**
+     * Save data to default file
+     */
     @FXML
     void saveAction() {
         // write to default file
@@ -149,6 +167,9 @@ public class HomeController {
         }
     }
 
+    /**
+     * Save data to specified file
+     */
     @FXML
     void saveAsAction() {
         // setup file chooser
@@ -236,6 +257,9 @@ public class HomeController {
         }
     }
 
+    /**
+     * View attributes of selected location
+     */
     @FXML
     void viewAttributesAction() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

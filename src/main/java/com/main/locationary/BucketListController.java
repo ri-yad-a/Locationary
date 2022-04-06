@@ -11,6 +11,7 @@ import java.io.File;
 
 public class BucketListController {
 
+    // FXML components
     @FXML
     private TextField POITextField;
 
@@ -62,6 +63,9 @@ public class BucketListController {
         updateLocationsView();
     }
 
+    /**
+     * Show instructions
+     */
     @FXML
     void instructionAction() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -73,8 +77,11 @@ public class BucketListController {
         alert.show();
     }
 
+    /**
+     * Add a location
+     */
     @FXML
-    void addLocationButtonClicked(ActionEvent event) {
+    void addLocationButtonClicked() {
 
         // get the user inputted location name
         String locationName = locationNameTextField.getText();
@@ -125,26 +132,38 @@ public class BucketListController {
 
     }
 
+    /**
+     * Transfer a location to Visited journal
+     */
     @FXML
     void completedButtonClicked() {
+        // get location
         Location l = locationsView.getSelectionModel().getSelectedItem();
         unselectLocationAction();
+        // transfer it
         HomeController.bucketList.removeLocation(l);
         HomeController.visited.addLocation(l);
         updateLocationsView();
         statusLabel.setText("Location " + l.getName() + " transferred to your Visited journal!");
     }
 
+    /**
+     * Go back to home page
+     */
     @FXML
-    void locationaryButtonClicked(ActionEvent event) {
+    void locationaryButtonClicked() {
         Main.switchScreen("home-view.fxml");
     }
 
+    /**
+     * Update view automatically
+     */
     @FXML
     void updateLocationsView() {
         boolean c = citywideButton.isSelected();
         boolean d = domesticButton.isSelected();
         boolean i = internationalButton.isSelected();
+        // check which radio buttons are checked to filter, show in view
         locationsView.getItems().clear();
         for (Location l: HomeController.bucketList.getLocations()) {
             if (l.getScope() == Location.Scope.CITYWIDE && c) {
@@ -163,6 +182,9 @@ public class BucketListController {
         }
     }
 
+    /**
+     * Select a location from the List View
+     */
     @FXML
     void selectLocationAction() {
         Location l = locationsView.getSelectionModel().getSelectedItem();
@@ -183,6 +205,9 @@ public class BucketListController {
         }
     }
 
+    /**
+     * Add POI to a selected location
+     */
     @FXML
     void addNewPOIAction() {
         String name = newPOIField.getText();
@@ -200,6 +225,9 @@ public class BucketListController {
         }
     }
 
+    /**
+     * Unselect location from view
+     */
     @FXML
     void unselectLocationAction() {
         locationsView.getSelectionModel().clearSelection();
@@ -209,6 +237,9 @@ public class BucketListController {
         completedButton.setDisable(true);
     }
 
+    /**
+     * Show POIs in view for a selected location
+     */
     @FXML
     void viewPOIInfoAction() {
         POI poi = locationPOIView.getSelectionModel().getSelectedItem();
@@ -218,6 +249,9 @@ public class BucketListController {
 
     }
 
+    /**
+     * Load data from file
+     */
     @FXML
     void loadFileAction() {
         // open file chooser object
@@ -250,6 +284,9 @@ public class BucketListController {
         }
     }
 
+    /**
+     * Save to default file
+     */
     @FXML
     void saveAction() {
         // write to default file
@@ -265,6 +302,9 @@ public class BucketListController {
         }
     }
 
+    /**
+     * Save to specified file
+     */
     @FXML
     void saveAsAction() {
         // setup file chooser
