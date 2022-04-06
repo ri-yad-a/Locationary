@@ -32,36 +32,18 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-
-
         File f = null;
-        try {
-            if (args.length == 1) {
-                f = new File(args[0]);
-                if (f.exists()) {
-                    FileHandler.setFile(f);
-                    Journal[] j1 = FileHandler.getFromFile();
-                    HomeController.bucketList = (BucketList) j1[0];
-                    HomeController.visited = (Visited) j1[1];
-                }
-            } else if (new File("data.csv").exists() && new File("data.csv").canRead()) {
-                f = new File("data.csv");
-            } else {
-                if (new File("data.csv").createNewFile()) {
-                    f = new File("data.csv");
-                }
+        if (args.length == 1) {
+            f = new File(args[0]);
+            if (f.exists()) {
+                FileHandler.setFile(f);
+                Journal[] j1 = FileHandler.getFromFile();
+                HomeController.bucketList = (BucketList) j1[0];
+                HomeController.visited = (Visited) j1[1];
             }
-        } catch(IOException e) {
-            e.printStackTrace();
         }
         FileHandler.setFile(f);
-
-
-
         launch();
-
-
-
     }
 
     /**
