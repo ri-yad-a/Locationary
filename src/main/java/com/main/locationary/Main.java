@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -31,6 +32,29 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+
+        File f = null;
+        try {
+            if (args.length == 1) {
+                f = new File(args[0]);
+                if (f.exists()) {
+                    FileHandler.setFile(f);
+                    Journal[] j1 = FileHandler.getFromFile();
+                    HomeController.bucketList = (BucketList) j1[0];
+                    HomeController.visited = (Visited) j1[1];
+                }
+            } else if (new File("data.csv").exists() && new File("data.csv").canRead()) {
+                f = new File("data.csv");
+            } else {
+                if (new File("data.csv").createNewFile()) {
+                    f = new File("data.csv");
+                }
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        FileHandler.setFile(f);
+
     }
 
     /**
