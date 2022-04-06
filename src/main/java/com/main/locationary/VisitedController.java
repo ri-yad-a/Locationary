@@ -116,10 +116,10 @@ public class VisitedController {
             if (canCreate) {
                 visitedLocation = new Location(scope, locationName);
                 // add location to visited
-                if (HomeController.visited.hasLocation(visitedLocation.getName())) {
-                    statusLabel.setText("Location already exists in visited");
-                } else {
+                if (!HomeController.visited.hasLocation(visitedLocation.getName()) && !HomeController.bucketList.hasLocation(visitedLocation.getName())) {
                     HomeController.visited.addLocation(visitedLocation);
+                } else {
+                    statusLabel.setText("Location " + visitedLocation.getName() + " already exists in your Journal!");
                 }
 
             }
@@ -191,22 +191,17 @@ public class VisitedController {
     @FXML
     void newPOIButtonClicked() {
 
-        Location selectedLocation = visitedListView.getSelectionModel().getSelectedItem();
         String poi = newPOITextField.getText();
-
-        for (Location location: HomeController.visited.getLocations()) {
-            if (location.getName().equals(selectedLocation.getName())) {
-                if (!poi.isBlank()) {
-                    if (location.hasPOI(poi)) {
-                        statusLabel.setText("POI already exists in this location");
-                    } else {
-                        location.addPOI(new POI(poi));
-                        updatePOIDisplay();
-                    }
-                } else {
-                    statusLabel.setText("Please enter a name for a new POI");
-                }
-
+        if (poi.isBlank()) {
+            statusLabel.setText("Please enter a name for a new POI!");
+        } else {
+            Location location = visitedListView.getSelectionModel().getSelectedItem();
+            if (!location.hasPOI(poi)) {
+                location.addPOI(new POI(poi));
+                updatePOIDisplay();
+                statusLabel.setText("POI " + poi + " added!");
+            } else {
+                statusLabel.setText("POI " + poi + " already exists in " + location.getName());
             }
         }
     }

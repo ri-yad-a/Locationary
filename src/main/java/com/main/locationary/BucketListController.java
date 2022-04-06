@@ -90,10 +90,10 @@ public class BucketListController {
             if (canCreate) {
                 bucketListLocation = new Location(scope, locationName);
                 // check if location exists
-                if (!HomeController.bucketList.hasLocation(bucketListLocation.getName())) {
+                if (!HomeController.bucketList.hasLocation(bucketListLocation.getName()) && !HomeController.visited.hasLocation(bucketListLocation.getName())) {
                     HomeController.bucketList.addLocation(bucketListLocation);
                 } else {
-                    statusLabel.setText("Location " + bucketListLocation.getName() + " already exists in your Bucket List!");
+                    statusLabel.setText("Location " + bucketListLocation.getName() + " already exists in your Journal!");
                 }
             }
 
