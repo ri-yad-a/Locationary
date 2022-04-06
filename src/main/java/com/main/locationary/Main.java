@@ -40,7 +40,7 @@ public class Main extends Application {
     public static void switchScreen(String filename) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(filename));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             mainStage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
