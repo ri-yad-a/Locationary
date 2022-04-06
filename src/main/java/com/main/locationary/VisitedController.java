@@ -69,6 +69,7 @@ public class VisitedController {
     private Button addRatingButton;
 
 
+
     @FXML
     void initialize() {
         // add monster weapon types
@@ -88,6 +89,9 @@ public class VisitedController {
 
     }
 
+    /**
+     * Add a Location to visited action
+     */
     @FXML
     void addLocationButtonClicked() {
 
@@ -140,12 +144,18 @@ public class VisitedController {
 
     }
 
+    /**
+     * GO back to home screen action
+     */
     @FXML
     void locationaryButtonClicked() {
         Main.switchScreen("home-view.fxml");
     }
 
 
+    /**
+     * update the visited locations ListView
+     */
     @FXML
     void updateView() {
         visitedListView.getItems().clear();
@@ -168,6 +178,9 @@ public class VisitedController {
 
     }
 
+    /**
+     * update the ListVIew that displays POIs of a location
+     */
     @FXML
     void updatePOIDisplay() {
 
@@ -189,6 +202,9 @@ public class VisitedController {
 
     }
 
+    /**
+     * Add a new POI to a location action
+     */
     @FXML
     void newPOIButtonClicked() {
 
@@ -207,6 +223,9 @@ public class VisitedController {
         }
     }
 
+    /**
+     * When the display of POIS is clicked
+     */
     @FXML
     void poiDisplayClicked() {
 
@@ -217,6 +236,9 @@ public class VisitedController {
 
     }
 
+    /**
+     * Adding a rating to a POI action
+     */
     @FXML
     void addRatingButtonClicked() {
 
@@ -239,6 +261,9 @@ public class VisitedController {
 
     }
 
+    /**
+     * Update rating number when changing the slider
+     */
     @FXML
     void updateRatingNumberLabel() {
         double rating = ratingSlider.getValue();
@@ -248,6 +273,9 @@ public class VisitedController {
     }
 
 
+    /**
+     * Unselect a location action
+     */
     @FXML
     void unselectLocationAction() {
         visitedListView.getSelectionModel().clearSelection();
@@ -256,6 +284,9 @@ public class VisitedController {
         newPOITextField.setDisable(true);
     }
 
+    /**
+     * Load data from file action
+     */
     @FXML
     void loadFileAction() {
         // open file chooser object
@@ -288,6 +319,9 @@ public class VisitedController {
         }
     }
 
+    /**
+     * Save to default file action
+     */
     @FXML
     void saveAction() {
         // write to default file
@@ -303,6 +337,9 @@ public class VisitedController {
         }
     }
 
+    /**
+     * Save data to a new file action
+     */
     @FXML
     void saveAsAction() {
         // setup file chooser
@@ -343,8 +380,12 @@ public class VisitedController {
     }
 
 
+    /**
+     * Alert Instructions on how to use Visited
+     */
     @FXML
     void instructionsClicked() {
+        // Create and display the appropriate alert for instructions
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("How to use Locationary");
         alert.setHeaderText("How to use your visited journal");
@@ -363,6 +404,7 @@ public class VisitedController {
      */
     @FXML
     void aboutAction() {
+        // Create and display the appropriate alert for information about the app
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About Locationary");
         alert.setHeaderText("Locationary");
