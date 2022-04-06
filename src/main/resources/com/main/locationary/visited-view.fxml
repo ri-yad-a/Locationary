@@ -83,7 +83,7 @@
       <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="384.0" layoutY="409.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" onDragDetected="#updateRatingNumberLabel" onMouseClicked="#updateRatingNumberLabel" showTickLabels="true" />
       <Button fx:id="addRatingButton" layoutX="388.0" layoutY="440.0" mnemonicParsing="false" onAction="#addRatingButtonClicked" styleClass="generalButton" text="Add Rating" />
       <ListView fx:id="displayLocationPOIS" layoutX="381.0" layoutY="90.0" onMouseClicked="#poiDisplayClicked" prefHeight="219.0" prefWidth="300.0" styleClass="generalField" />
-      <Label fx:id="ratingNumberLabel" layoutX="728.0" layoutY="433.0" prefHeight="18.0" prefWidth="19.0" />
+      <Label fx:id="ratingNumberLabel" layoutX="531.0" layoutY="400.0" prefHeight="18.0" prefWidth="19.0" styleClass="generalLabel" />
       <Label layoutX="17.0" layoutY="60.0" styleClass="generalLabel" text="Add New Location">
          <font>
             <Font size="18.0" />

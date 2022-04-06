@@ -13,20 +13,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.BucketListController">
+<AnchorPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@style-sheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.BucketListController">
    <children>
-      <Button layoutX="165.0" layoutY="220.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" text="Add Location" />
-      <TextField fx:id="locationNameTextField" layoutX="21.0" layoutY="185.0" prefHeight="26.0" prefWidth="112.0" />
-      <ChoiceBox fx:id="scopeChoiceBox" layoutX="156.0" layoutY="185.0" prefHeight="26.0" prefWidth="100.0" />
-      <Label layoutX="30.0" layoutY="166.0" text="Location Name">
+      <Button layoutX="136.0" layoutY="137.0" mnemonicParsing="false" onAction="#addLocationButtonClicked" prefHeight="26.0" prefWidth="106.0" styleClass="generalButton" text="Add Location" />
+      <TextField fx:id="locationNameTextField" layoutX="13.0" layoutY="104.0" prefHeight="26.0" prefWidth="119.0" styleClass="generalField" />
+      <ChoiceBox fx:id="scopeChoiceBox" layoutX="138.0" layoutY="104.0" prefHeight="26.0" prefWidth="100.0" styleClass="generalButton" />
+      <Label layoutX="20.0" layoutY="85.0" styleClass="generalLabel" text="Location Name">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label layoutX="190.0" layoutY="167.0" text="Scope" />
-      <Label layoutX="295.0" layoutY="167.0" text="POI" />
-      <TextField fx:id="POITextField" layoutX="276.0" layoutY="185.0" prefHeight="26.0" prefWidth="119.0" />
-      <Button fx:id="completedButton" disable="true" layoutX="251.0" layoutY="443.0" mnemonicParsing="false" onAction="#completedButtonClicked" text="Completed" />
-      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="850.0">
+      <Label layoutX="167.0" layoutY="85.0" styleClass="generalLabel" text="Scope">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="292.0" layoutY="85.0" styleClass="generalLabel" text="POI">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="POITextField" layoutX="244.0" layoutY="104.0" prefHeight="26.0" prefWidth="119.0" styleClass="generalField" />
+      <Button fx:id="completedButton" disable="true" layoutX="385.0" layoutY="407.0" mnemonicParsing="false" onAction="#completedButtonClicked" styleClass="generalButton" text="Completed" />
+      <MenuBar prefHeight="26.0" prefWidth="700.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
                <items>
@@ -45,37 +51,47 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" text="Locationary" textAlignment="CENTER" underline="true" />
-      <ListView fx:id="locationsView" layoutX="413.0" layoutY="57.0" onMouseClicked="#selectLocationAction" prefHeight="325.0" prefWidth="422.0" />
-      <RadioButton fx:id="citywideButton" layoutX="425.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Citywide">
+      <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#locationaryButtonClicked" styleClass="generalButton" text="Locationary" textAlignment="CENTER" />
+      <ListView fx:id="locationsView" layoutX="13.0" layoutY="195.0" onMouseClicked="#selectLocationAction" prefHeight="250.0" prefWidth="350.0" styleClass="generalField" />
+      <RadioButton fx:id="citywideButton" layoutX="20.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" styleClass="generalLabel" text="Citywide">
          <font>
-            <Font size="20.0" />
+            <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="domesticButton" layoutX="554.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Domestic">
+      <RadioButton fx:id="domesticButton" layoutX="120.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" styleClass="generalLabel" text="Domestic">
          <font>
-            <Font size="20.0" />
+            <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="internationalButton" layoutX="687.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateLocationsView" text="International">
+      <RadioButton fx:id="internationalButton" layoutX="228.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" styleClass="generalLabel" text="International">
          <font>
-            <Font size="20.0" />
+            <Font size="14.0" />
          </font>
       </RadioButton>
-      <Label fx:id="statusLabel" layoutX="16.0" layoutY="627.0" text="Label" />
-      <Label layoutX="413.0" layoutY="28.0" text="Bucket Listed Locations">
+      <Label fx:id="statusLabel" layoutX="10.0" layoutY="477.0" styleClass="generalLabel" text="Status" />
+      <Label layoutX="13.0" layoutY="171.0" styleClass="generalLabel" text="Bucket Listed Locations">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="409.0" text="Name of POI to add:">
+      <Label layoutX="386.0" layoutY="321.0" styleClass="generalLabel" text="Name of POI to add:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="newPOIField" disable="true" layoutX="169.0" layoutY="406.0" prefHeight="26.0" prefWidth="214.0" />
-      <Button fx:id="addPOIButton" disable="true" layoutX="77.0" layoutY="443.0" mnemonicParsing="false" onAction="#addNewPOIAction" text="Add New POI" />
-      <Button layoutX="569.0" layoutY="443.0" mnemonicParsing="false" onAction="#unselectLocationAction" text="Unselect Location" />
-      <ListView fx:id="locationPOIView" layoutX="14.0" layoutY="253.0" onMouseClicked="#viewPOIInfoAction" prefHeight="149.0" prefWidth="386.0" />
+      <TextField fx:id="newPOIField" disable="true" layoutX="385.0" layoutY="339.0" prefHeight="26.0" prefWidth="214.0" styleClass="generalField" />
+      <Button fx:id="addPOIButton" disable="true" layoutX="385.0" layoutY="375.0" mnemonicParsing="false" onAction="#addNewPOIAction" styleClass="generalButton" text="Add New POI" />
+      <Button layoutX="562.0" layoutY="375.0" mnemonicParsing="false" onAction="#unselectLocationAction" styleClass="generalButton" text="Unselect Location" />
+      <ListView fx:id="locationPOIView" layoutX="386.0" layoutY="97.0" onMouseClicked="#viewPOIInfoAction" prefHeight="219.0" prefWidth="300.0" styleClass="generalField" />
+      <Label layoutX="13.0" layoutY="61.0" styleClass="generalLabel" text="Add New Location">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="385.0" layoutY="73.0" styleClass="generalLabel" text="Location POIs">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
