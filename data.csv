@@ -1,14 +1,20 @@
 Bucket List Locations:
+	Domestic Location,Vancouver,-1,-1.000000
+		POI,Beach,-1,-1.000000
+	Domestic Location,Toronto,-1,-1.000000
+		POI,CN Tower,-1,-1.000000
+	Citywide Location,Calgary,-1,-1.000000
+		POI,Calgary Tower,-1,-1.000000
+
+		POI,Peace Bridge,-1,-1.000000
+
+	International Location,Dubai,-1,-1.000000
+		POI,Burj Khalifa,-1,-1.000000
 
 Visited Locations:
-	Domestic Location,sdf,-1,-1.000000
-		POI,sdf,-1,-1.000000
-	Domestic Location,sdfsdf,-1,-1.000000
-		POI,sdf,-1,-1.000000
-	Citywide Location,sdfsdfsdf,-1,-1.000000
-		POI,sdfsdf,-1,-1.000000
-	Citywide Location,sdfsdfsdfsdf,-1,-1.000000
-		POI,sdfsdf,-1,-1.000000
-
-		POI,sdf,-1,-1.000000
-
+	International Location,Paris,-1,-1.000000
+		POI,Eiffel Tower,-1,4.300000
+	Domestic Location,Edmonton,-1,4.300000
+		POI,Rogers Place,-1,4.300000
+	Domestic Location,Kelowna,-1,2.600000
+		POI,Hot Springs,-1,2.600000
