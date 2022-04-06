@@ -31,7 +31,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+
+
 
         File f = null;
         try {
@@ -54,6 +55,12 @@ public class Main extends Application {
             e.printStackTrace();
         }
         FileHandler.setFile(f);
+
+
+
+        launch();
+
+
 
     }
 
