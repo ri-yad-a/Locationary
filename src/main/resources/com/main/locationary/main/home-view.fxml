@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" stylesheets="@style-sheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.locationary.main.HomeController">
+   <AnchorPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" styleClass="backgroundPane">
+      <children>
+         <Button layoutX="77.0" layoutY="366.0" mnemonicParsing="false" onAction="#viewEditBucketListButtonClicked" prefHeight="26.0" prefWidth="146.0" styleClass="generalButton" text="View/Edit Bucket List" />
+         <Button layoutX="476.0" layoutY="366.0" mnemonicParsing="false" onAction="#viewEditVisitedButtonClicked" prefHeight="26.0" prefWidth="146.0" styleClass="generalButton" text="View/Edit Visited" />
+         <Label layoutX="163.0" layoutY="29.0" styleClass="generalLabel" text="Welcome to Locationary!">
+            <font>
+               <Font name="SansSerif Regular" size="30.0" />
+            </font></Label>
+         <ListView fx:id="bucketListView" layoutX="50.0" layoutY="150.0" onMouseClicked="#selectBucketListLocationAction" prefHeight="200.0" prefWidth="200.0" styleClass="generalField" />
+         <ListView fx:id="visitedView" layoutX="449.0" layoutY="150.0" onMouseClicked="#selectVisitedLocationAction" prefHeight="200.0" prefWidth="200.0" styleClass="generalField" />
+         <MenuBar prefHeight="28.0" prefWidth="700.0" styleClass="menuBar">
+           <menus>
+             <Menu mnemonicParsing="false" text="File">
+               <items>
+                     <MenuItem mnemonicParsing="false" onAction="#loadFileAction" text="Load" />
+                     <SeparatorMenuItem mnemonicParsing="false" />
+                     <MenuItem mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                     <MenuItem mnemonicParsing="false" onAction="#saveAsAction" text="Save As" />
+                     <SeparatorMenuItem mnemonicParsing="false" />
+                 <MenuItem mnemonicParsing="false" onAction="#quitAction" text="Quit" />
+               </items>
+             </Menu>
+             <Menu mnemonicParsing="false" text="Help">
+               <items>
+                 <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="About" />
+                     <MenuItem mnemonicParsing="false" onAction="#instructionAction" text="Instructions" />
+               </items>
+             </Menu>
+           </menus>
+         </MenuBar>
+         <Label fx:id="statusLabel" layoutX="14.0" layoutY="468.0" styleClass="generalLabel" text="Status" />
+         <Button fx:id="attributesButton" disable="true" layoutX="277.0" layoutY="237.0" mnemonicParsing="false" onAction="#viewAttributesAction" prefHeight="26.0" prefWidth="146.0" styleClass="generalButton" text="View Attributes" />
+         <Label layoutX="40.0" layoutY="132.0" styleClass="generalLabel" text="Five Most Recently Added Locations" />
+         <Label layoutX="448.0" layoutY="132.0" styleClass="generalLabel" text="Five Most Highly Rated Locations" />
+         <Label layoutX="83.0" layoutY="96.0" styleClass="generalLabel" text="Bucket List">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Label layoutX="507.0" layoutY="96.0" styleClass="generalLabel" text="Visited">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+</VBox>
