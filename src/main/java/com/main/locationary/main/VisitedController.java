@@ -123,8 +123,13 @@ public class VisitedController {
                 // add location to visited
                 if (!HomeController.visited.hasLocation(visitedLocation.getName()) && !HomeController.bucketList.hasLocation(visitedLocation.getName())) {
                     HomeController.visited.addLocation(visitedLocation);
+                    statusLabel.setText("Location " + visitedLocation.getName() + " added to Visited journal.");
+                    // clear input fields after performing action
+                    locationNameTextField.clear();
+                    scopeChoiceBox.setValue(null);
+                    POITextField.clear();
                 } else {
-                    statusLabel.setText("Location " + visitedLocation.getName() + " already exists in your Journal!");
+                    statusLabel.setText("Location " + visitedLocation.getName() + " already exists!");
                 }
 
             }
@@ -141,12 +146,6 @@ public class VisitedController {
         } else {
             statusLabel.setText("Please enter a location name.");
         }
-
-        //clear input fields after performing action
-        locationNameTextField.clear();
-        scopeChoiceBox.getItems().clear();
-        POITextField.clear();
-
     }
 
     /**
@@ -171,11 +170,15 @@ public class VisitedController {
 
         for (Location location: HomeController.visited.getLocations()) {
             if (c && location.getScope() == Location.Scope.CITYWIDE) {
-                    visitedListView.getItems().add(location);
+                visitedListView.getItems().add(location);
             }
+        }
+        for (Location location: HomeController.visited.getLocations()) {
             if (d && location.getScope() == Location.Scope.DOMESTIC) {
                 visitedListView.getItems().add(location);
             }
+        }
+        for (Location location: HomeController.visited.getLocations()) {
             if (i && location.getScope() == Location.Scope.INTERNATIONAL) {
                 visitedListView.getItems().add(location);
             }
