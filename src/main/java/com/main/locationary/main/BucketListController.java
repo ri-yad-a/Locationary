@@ -129,6 +129,11 @@ public class BucketListController {
             statusLabel.setText("Please enter a location name.");
         }
 
+        // clear input fields after performing action
+        locationNameTextField.clear();
+        scopeChoiceBox.getItems().clear();
+        POITextField.clear();
+
 
 
     }
@@ -224,6 +229,9 @@ public class BucketListController {
                 statusLabel.setText("POI " + name + " already exists in " + l.getName());
             }
         }
+
+        //clear input fields after performing action
+        newPOIField.clear();
     }
 
     /**

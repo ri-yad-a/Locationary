@@ -142,6 +142,11 @@ public class VisitedController {
             statusLabel.setText("Please enter a location name.");
         }
 
+        //clear input fields after performing action
+        locationNameTextField.clear();
+        scopeChoiceBox.getItems().clear();
+        POITextField.clear();
+
     }
 
     /**
@@ -221,6 +226,9 @@ public class VisitedController {
                 statusLabel.setText("POI " + poi + " already exists in " + location.getName());
             }
         }
+
+        // clear input fields after performing action
+        newPOITextField.clear();
     }
 
     /**
