@@ -201,13 +201,24 @@ class LocationaryTests {
     // test getTopFive
     @Test
     public void testGetTopFive() {
-
+        // test with ordering three locations
+        Location[] actual = visited.getTopFive();
+        // create expected array
+        Location[] expected = new Location[]{visited.getLocation("Toronto"), visited.getLocation("Dubai"), visited.getLocation("Edmonton"), null, null};
+        // assert they are equal
+        assertArrayEquals(expected, actual, "getTopFive() does not correctly get the top locations in Visited");
     }
     // No locations added
     @Test
     // test with no locations
     public void testGetTopFiveNone() {
-
+        // create test Visited object
+        Visited test = new Visited();
+        Location[] actual = test.getTopFive();
+        // returns null locations, on purpose
+        Location[] expected = new Location[]{null, null, null, null, null};
+        // assert they are equal
+        assertArrayEquals(expected, actual, "getTopFive() incorrectly shows locations when there are none");
     }
 
     // test equals()
