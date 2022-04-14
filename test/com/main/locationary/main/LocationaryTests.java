@@ -354,9 +354,11 @@ class LocationaryTests {
     // test location with one POI
     public void testToStringLocationOnePOI() {
         // get actual
-        String actual = bl.getLocation("Vancouver").toString();
+        String actual = bl.getLocation("Vancouver").toVerboseString();
         // init expected
-        String expected = "Vancouver: \tPOIS: [Beach]";
+        String expected = "Domestic Location:\n" +
+                "Vancouver \n" +
+                "POIS: [Beach]";
         // assert they are equal
         assertEquals(expected, actual, "The toString() method in Location does not correctly represent a Location with one POI");
     }
@@ -365,9 +367,11 @@ class LocationaryTests {
     // test location with two POIs
     public void testToStringLocationTwoPOI() {
         // get actual
-        String actual = bl.getLocation("Paris").toString();
+        String actual = bl.getLocation("Paris").toVerboseString();
         // init expected
-        String expected = "Paris: \tPOIS: [Eiffel Tower, Louvre]";
+        String expected = "International Location:\n" +
+                "Paris \n" +
+                "POIS: [Eiffel Tower, Louvre]";
         // assert they are equal
         assertEquals(expected, actual, "The toString() method in Location does not correctly represent a Location with two POIs");
     }
