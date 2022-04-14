@@ -33,13 +33,13 @@ public class VisitedController {
     private ChoiceBox<String> scopeChoiceBox;
 
     @FXML
-    private RadioButton citywideRadioButton;
+    private CheckBox citywideButton;
 
     @FXML
-    private RadioButton domesticRadioButton;
+    private CheckBox domesticButton;
 
     @FXML
-    private RadioButton internationalRadioButton;
+    private CheckBox internationalButton;
 
     @FXML
     private Label statusLabel;
@@ -76,9 +76,9 @@ public class VisitedController {
         scopeChoiceBox.getItems().add("Citywide");
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
-        citywideRadioButton.setSelected(true);
-        domesticRadioButton.setSelected(true);
-        internationalRadioButton.setSelected(true);
+        citywideButton.setSelected(true);
+        domesticButton.setSelected(true);
+        internationalButton.setSelected(true);
         newPOIButton.setDisable(true);
         newPOILabel.setDisable(true);
         newPOITextField.setDisable(true);
@@ -164,9 +164,9 @@ public class VisitedController {
     void updateView() {
         visitedListView.getItems().clear();
 
-        boolean c = citywideRadioButton.isSelected();
-        boolean d = domesticRadioButton.isSelected();
-        boolean i = internationalRadioButton.isSelected();
+        boolean c = citywideButton.isSelected();
+        boolean d = domesticButton.isSelected();
+        boolean i = internationalButton.isSelected();
 
         for (Location location: HomeController.visited.getLocations()) {
             if (c && location.getScope() == Location.Scope.CITYWIDE) {

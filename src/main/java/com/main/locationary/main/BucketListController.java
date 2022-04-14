@@ -17,13 +17,13 @@ public class BucketListController {
     private TextField POITextField;
 
     @FXML
-    private RadioButton citywideButton;
+    private CheckBox citywideButton;
 
     @FXML
-    private RadioButton domesticButton;
+    private CheckBox domesticButton;
 
     @FXML
-    private RadioButton internationalButton;
+    private CheckBox internationalButton;
 
     @FXML
     private TextField locationNameTextField;
