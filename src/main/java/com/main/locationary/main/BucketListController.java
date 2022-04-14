@@ -17,13 +17,13 @@ public class BucketListController {
     private TextField POITextField;
 
     @FXML
-    private RadioButton citywideButton;
+    private CheckBox citywideButton;
 
     @FXML
-    private RadioButton domesticButton;
+    private CheckBox domesticButton;
 
     @FXML
-    private RadioButton internationalButton;
+    private CheckBox internationalButton;
 
     @FXML
     private TextField locationNameTextField;
@@ -111,8 +111,13 @@ public class BucketListController {
                 // check if location exists
                 if (!HomeController.bucketList.hasLocation(bucketListLocation.getName()) && !HomeController.visited.hasLocation(bucketListLocation.getName())) {
                     HomeController.bucketList.addLocation(bucketListLocation);
+                    statusLabel.setText("Location " + bucketListLocation.getName() + " added to BucketList.");
+                    // clear input fields after performing action
+                    locationNameTextField.clear();
+                    scopeChoiceBox.setValue(null);
+                    POITextField.clear();
                 } else {
-                    statusLabel.setText("Location " + bucketListLocation.getName() + " already exists in your Journal!");
+                    statusLabel.setText("Location " + bucketListLocation.getName() + " already exists!");
                 }
             }
 
@@ -128,14 +133,6 @@ public class BucketListController {
         } else {
             statusLabel.setText("Please enter a location name.");
         }
-
-        // clear input fields after performing action
-        locationNameTextField.clear();
-        scopeChoiceBox.getItems().clear();
-        POITextField.clear();
-
-
-
     }
 
     /**

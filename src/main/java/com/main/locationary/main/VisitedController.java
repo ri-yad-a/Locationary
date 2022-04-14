@@ -33,13 +33,13 @@ public class VisitedController {
     private ChoiceBox<String> scopeChoiceBox;
 
     @FXML
-    private RadioButton citywideRadioButton;
+    private CheckBox citywideButton;
 
     @FXML
-    private RadioButton domesticRadioButton;
+    private CheckBox domesticButton;
 
     @FXML
-    private RadioButton internationalRadioButton;
+    private CheckBox internationalButton;
 
     @FXML
     private Label statusLabel;
@@ -76,9 +76,9 @@ public class VisitedController {
         scopeChoiceBox.getItems().add("Citywide");
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
-        citywideRadioButton.setSelected(true);
-        domesticRadioButton.setSelected(true);
-        internationalRadioButton.setSelected(true);
+        citywideButton.setSelected(true);
+        domesticButton.setSelected(true);
+        internationalButton.setSelected(true);
         newPOIButton.setDisable(true);
         newPOILabel.setDisable(true);
         newPOITextField.setDisable(true);
@@ -123,8 +123,13 @@ public class VisitedController {
                 // add location to visited
                 if (!HomeController.visited.hasLocation(visitedLocation.getName()) && !HomeController.bucketList.hasLocation(visitedLocation.getName())) {
                     HomeController.visited.addLocation(visitedLocation);
+                    statusLabel.setText("Location " + visitedLocation.getName() + " added to Visited journal.");
+                    // clear input fields after performing action
+                    locationNameTextField.clear();
+                    scopeChoiceBox.setValue(null);
+                    POITextField.clear();
                 } else {
-                    statusLabel.setText("Location " + visitedLocation.getName() + " already exists in your Journal!");
+                    statusLabel.setText("Location " + visitedLocation.getName() + " already exists!");
                 }
 
             }
@@ -141,12 +146,6 @@ public class VisitedController {
         } else {
             statusLabel.setText("Please enter a location name.");
         }
-
-        //clear input fields after performing action
-        locationNameTextField.clear();
-        scopeChoiceBox.getItems().clear();
-        POITextField.clear();
-
     }
 
     /**
@@ -165,17 +164,21 @@ public class VisitedController {
     void updateView() {
         visitedListView.getItems().clear();
 
-        boolean c = citywideRadioButton.isSelected();
-        boolean d = domesticRadioButton.isSelected();
-        boolean i = internationalRadioButton.isSelected();
+        boolean c = citywideButton.isSelected();
+        boolean d = domesticButton.isSelected();
+        boolean i = internationalButton.isSelected();
 
         for (Location location: HomeController.visited.getLocations()) {
             if (c && location.getScope() == Location.Scope.CITYWIDE) {
-                    visitedListView.getItems().add(location);
+                visitedListView.getItems().add(location);
             }
+        }
+        for (Location location: HomeController.visited.getLocations()) {
             if (d && location.getScope() == Location.Scope.DOMESTIC) {
                 visitedListView.getItems().add(location);
             }
+        }
+        for (Location location: HomeController.visited.getLocations()) {
             if (i && location.getScope() == Location.Scope.INTERNATIONAL) {
                 visitedListView.getItems().add(location);
             }
