@@ -74,6 +74,9 @@ public class BucketList extends Journal {
     @Override
     public boolean equals(Object o) {
         // check if locations are the same
+        if (o == null) {
+            return false;
+        }
         BucketList bl = (BucketList) o;
         return this.locations.equals(bl.getLocations());
     }
