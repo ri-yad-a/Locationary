@@ -17,13 +17,13 @@ public class BucketListController {
     private TextField POITextField;
 
     @FXML
-    private CheckBox citywideCheckBox;
+    private CheckBox citywideButton;
 
     @FXML
-    private CheckBox domesticCheckBox;
+    private CheckBox domesticButton;
 
     @FXML
-    private CheckBox internationalCheckBox;
+    private CheckBox internationalButton;
 
     @FXML
     private TextField locationNameTextField;
@@ -55,9 +55,9 @@ public class BucketListController {
         scopeChoiceBox.getItems().add("Citywide");
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
-        citywideCheckBox.setSelected(true);
-        domesticCheckBox.setSelected(true);
-        internationalCheckBox.setSelected(true);
+        citywideButton.setSelected(true);
+        domesticButton.setSelected(true);
+        internationalButton.setSelected(true);
         newPOIField.setDisable(true);
         addPOIButton.setDisable(true);
         completedButton.setDisable(true);
@@ -163,9 +163,9 @@ public class BucketListController {
      */
     @FXML
     void updateLocationsView() {
-        boolean c = citywideCheckBox.isSelected();
-        boolean d = domesticCheckBox.isSelected();
-        boolean i = internationalCheckBox.isSelected();
+        boolean c = citywideButton.isSelected();
+        boolean d = domesticButton.isSelected();
+        boolean i = internationalButton.isSelected();
         // check which radio buttons are checked to filter, show in view
         locationsView.getItems().clear();
         for (Location l: HomeController.bucketList.getLocations()) {
