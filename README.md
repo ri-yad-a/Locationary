@@ -14,12 +14,12 @@ Date: April 15, 2022
 
 Tutorial T10
 
----
+
 
 ## Technologies
 Java 16, Git, JavaFX, Scenebuilder 2.0
 
----
+
 
 ## How to run the program through command line
 To run this program with the .class files that contain 
@@ -34,7 +34,7 @@ Where --module-path is the location of the
 lib folder where you have downloaded your javafx sdk
 
 
----
+
 
 To run this program using the .jar file for this project, 
 navigate to the location of the .jar file and run the
@@ -85,7 +85,7 @@ bucket list screen apart from the added 'rating' data. The
 user can choose to add ratings to their previously inputted
 locations/POI's
 
----
+
 
 ## GUI Menu Bar Options
 ### File
