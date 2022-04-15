@@ -33,13 +33,13 @@ public class VisitedController {
     private ChoiceBox<String> scopeChoiceBox;
 
     @FXML
-    private CheckBox citywideButton;
+    private CheckBox citywideCheckBox;
 
     @FXML
-    private CheckBox domesticButton;
+    private CheckBox domesticCheckBox;
 
     @FXML
-    private CheckBox internationalButton;
+    private CheckBox internationalCheckBox;
 
     @FXML
     private Label statusLabel;
@@ -69,16 +69,20 @@ public class VisitedController {
     private Button addRatingButton;
 
 
-
+    /**
+     * Set the initial status of all the necessary JavaFx components
+     */
     @FXML
     void initialize() {
         // add monster weapon types
         scopeChoiceBox.getItems().add("Citywide");
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
-        citywideButton.setSelected(true);
-        domesticButton.setSelected(true);
-        internationalButton.setSelected(true);
+        // set the default status of the checkboxes to all being selected
+        citywideCheckBox.setSelected(true);
+        domesticCheckBox.setSelected(true);
+        internationalCheckBox.setSelected(true);
+        // initially disable all the poi input fields
         newPOIButton.setDisable(true);
         newPOILabel.setDisable(true);
         newPOITextField.setDisable(true);
@@ -162,22 +166,27 @@ public class VisitedController {
      */
     @FXML
     void updateView() {
+        // clear the list view
         visitedListView.getItems().clear();
 
-        boolean c = citywideButton.isSelected();
-        boolean d = domesticButton.isSelected();
-        boolean i = internationalButton.isSelected();
+        // get booleans for the status of all the checkboxes
+        boolean c = citywideCheckBox.isSelected();
+        boolean d = domesticCheckBox.isSelected();
+        boolean i = internationalCheckBox.isSelected();
 
+        // first loop through the locations of visited and check if they are citywide, then add them to the visited listview if citywide button is clicked
         for (Location location: HomeController.visited.getLocations()) {
             if (c && location.getScope() == Location.Scope.CITYWIDE) {
                 visitedListView.getItems().add(location);
             }
         }
+        // do the same for domestic locations
         for (Location location: HomeController.visited.getLocations()) {
             if (d && location.getScope() == Location.Scope.DOMESTIC) {
                 visitedListView.getItems().add(location);
             }
         }
+        // and finally do the same for international locations
         for (Location location: HomeController.visited.getLocations()) {
             if (i && location.getScope() == Location.Scope.INTERNATIONAL) {
                 visitedListView.getItems().add(location);
@@ -192,9 +201,13 @@ public class VisitedController {
     @FXML
     void updatePOIDisplay() {
 
+        // get the location that is selected in the ListView
         Location location = visitedListView.getSelectionModel().getSelectedItem();
+        // clear the pois view
         displayLocationPOIS.getItems().clear();
+        // if the location isn't null
         if (location != null) {
+            // display all the pois of the selcted locations
             statusLabel.setText("Showing POIs of location " + location.getName());
             for (POI poi: location.getPOIs()) {
                 displayLocationPOIS.getItems().add(poi);
@@ -202,6 +215,7 @@ public class VisitedController {
             newPOIButton.setDisable(false);
             newPOITextField.setDisable(false);
         } else {
+            // if location is null then disable poi input fields and ask user to select a location
             newPOIButton.setDisable(true);
             newPOITextField.setDisable(true);
             statusLabel.setText("Please select a location from the list.");
@@ -216,11 +230,17 @@ public class VisitedController {
     @FXML
     void newPOIButtonClicked() {
 
+        // get the name of the poi from the appropriate text field
         String poi = newPOITextField.getText();
+        // if the field is blank
         if (poi.isBlank()) {
+            // ask user to input a name
             statusLabel.setText("Please enter a name for a new POI!");
         } else {
+            // if not empty
+            // get selected location
             Location location = visitedListView.getSelectionModel().getSelectedItem();
+            // add poi to the location and update poi display and status label
             if (!location.hasPOI(poi)) {
                 location.addPOI(new POI(poi));
                 updatePOIDisplay();
@@ -240,6 +260,7 @@ public class VisitedController {
     @FXML
     void poiDisplayClicked() {
 
+        // enable the poi input fields
         ratingSlider.setDisable(false);
         ratingLabel.setDisable(false);
         addRatingButton.setDisable(false);
@@ -253,18 +274,24 @@ public class VisitedController {
     @FXML
     void addRatingButtonClicked() {
 
+        // get selected location
         Location selectedLocation = visitedListView.getSelectionModel().getSelectedItem();
+        // get rating from slider input
         double rating = ratingSlider.getValue();
         String roundedRatingStr = String.format("%.2g%n", rating);
         double roundedRating = Double.parseDouble(roundedRatingStr);
+
         try {
+            // get selected poi and set its rating to the rating input
             POI selectedPOI = displayLocationPOIS.getSelectionModel().getSelectedItem();
             selectedPOI.setRating(roundedRating);
             selectedLocation.setRating(0);
+            // update poi display
             updatePOIDisplay();
         } catch (NumberFormatException e) {
             statusLabel.setText("Please enter a value between 1 and 5 for location rating");
         } catch (NullPointerException e) {
+            // if null pointer exception is caught, ask user to select a poi to add a rating to
             statusLabel.setText("Please select a POI to add a rating to");
         }
 
@@ -277,8 +304,10 @@ public class VisitedController {
      */
     @FXML
     void updateRatingNumberLabel() {
+        // get the rating from the slider input
         double rating = ratingSlider.getValue();
         String roundedRatingStr = String.format("%.2g%n", rating);
+        // set the ratingNumberLabel text to the rating so that user can see exactly which number they are inputting
         ratingNumberLabel.setText("" + roundedRatingStr);
 
     }
@@ -289,8 +318,11 @@ public class VisitedController {
      */
     @FXML
     void unselectLocationAction() {
+        // clear ListView selection
         visitedListView.getSelectionModel().clearSelection();
+        // clear poi display
         displayLocationPOIS.getItems().clear();
+        // disable poi input fields
         newPOIButton.setDisable(true);
         newPOITextField.setDisable(true);
     }
