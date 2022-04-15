@@ -51,10 +51,11 @@ public class HomeController {
     }
 
     /**
-     * Show instructions
+     * Show instructions. menu option
      */
     @FXML
     void instructionAction() {
+        // create Alert
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("How to use Locationary");
         alert.setHeaderText("How to navigate the Homepage");
@@ -62,14 +63,16 @@ public class HomeController {
                 "Use the Help menu option to view information about the program and instructions.\nFive locations from your Bucket List and Visited journal show up on this" +
                 " screen when you add the.\nClick \"View Attributes\" to see the information specific to a certian location.\nFinally, use the other buttons to navigate to" +
                 " other features of the program.");
+        // show Alert
         alert.show();
     }
 
     void updateViews() {
+        // clear views
         bucketListView.getItems().clear();
         visitedView.getItems().clear();
 
-        // if bucketlist has less than or equal to 5 locations
+        // if BucketList has less than or equal to 5 locations
         // then output all those locations to the bucket list view
         ArrayList<Location> bucketListLocations = bucketList.getLocations();
         int blSize = bucketListLocations.size();
@@ -90,6 +93,7 @@ public class HomeController {
         ArrayList<Location> visitedLocations = visited.getLocations();
         int vSize = visitedLocations.size();
         if (vSize <= 5) {
+            // less than or equal to 5 locations, add them all
             for (Location location: visitedLocations) {
                 visitedView.getItems().add(location);
             }
@@ -100,32 +104,28 @@ public class HomeController {
                 visitedView.getItems().add(top[i]);
             }
         }
-
-
-
     }
 
     /**
-     * Go to Bucket List view
+     * Go to Bucket List view, invoked by button click
      */
     @FXML
     void viewEditBucketListButtonClicked() {
+        // switch screen method
         Main.switchScreen("bucketList-view.fxml");
     }
 
 
     /**
-     * Go to Visited View
-     * @param event
+     * Go to Visited View, invoked by button click
      */
     @FXML
-    void viewEditVisitedButtonClicked(ActionEvent event) {
+    void viewEditVisitedButtonClicked() {
         Main.switchScreen("visited-view.fxml");
-
     }
 
     /**
-     * Load a file to program
+     * Load a file to program. menu option
      */
     @FXML
     void loadFileAction() {
@@ -160,7 +160,7 @@ public class HomeController {
     }
 
     /**
-     * Save data to default file
+     * Save data to default file, menu option
      */
     @FXML
     void saveAction() {
@@ -178,7 +178,7 @@ public class HomeController {
     }
 
     /**
-     * Save data to specified file
+     * Save data to specified file, menu option
      */
     @FXML
     void saveAsAction() {
@@ -212,7 +212,7 @@ public class HomeController {
     }
 
     /**
-     * Quits program
+     * Quits program. menu option
      */
     @FXML
     void quitAction() {
@@ -220,15 +220,17 @@ public class HomeController {
     }
 
     /**
-     * View information
+     * View information, menu option
      */
     @FXML
     void aboutAction() {
+        // create Alert
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About Locationary");
         alert.setHeaderText("Locationary");
         alert.setContentText("Locationary is a traveller's journal that keeps track of places one wants to travel to, and places that travellers have already been. " +
                 "Authors:\nGaurav Ashar (gaurav.ashar@ucalgary.ca)\nRiyad Abdullayev (riyad.abdullayev@ucalgary.ca)");
+        // show Alert
         alert.show();
     }
 
@@ -272,14 +274,20 @@ public class HomeController {
      */
     @FXML
     void viewAttributesAction() {
+        // create Alert
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // get selected Location
         Location l = bucketListView.getSelectionModel().getSelectedItem();
         if (l == null) {
+            // bucket list not selected, check visited view
             l = visitedView.getSelectionModel().getSelectedItem();
         }
+        // set text
         alert.setTitle("Information about a location");
         alert.setHeaderText(l.getName());
+        // get verbose string
         alert.setContentText(l.toVerboseString());
+        // show Alert
         alert.show();
     }
 
