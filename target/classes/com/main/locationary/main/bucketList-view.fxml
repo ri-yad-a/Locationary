@@ -79,17 +79,17 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <CheckBox fx:id="citywideButton" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Citywide">
+      <CheckBox fx:id="citywideCheckBox" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Citywide">
          <font>
             <Font name="Lucida Fax Regular" size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="domesticButton" layoutX="132.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Domestic">
+      <CheckBox fx:id="domesticCheckBox" layoutX="132.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" text="Domestic">
          <font>
             <Font name="Lucida Fax Regular" size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="internationalButton" layoutX="245.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" text="International">
+      <CheckBox fx:id="internationalCheckBox" layoutX="245.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateLocationsView" text="International">
          <font>
             <Font name="Lucida Fax Regular" size="14.0" />
          </font>

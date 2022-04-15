@@ -25,13 +25,13 @@ public class BucketListController {
     private TextField POITextField;
 
     @FXML
-    private CheckBox citywideButton;
+    private CheckBox citywideCheckBox;
 
     @FXML
-    private CheckBox domesticButton;
+    private CheckBox domesticCheckBox;
 
     @FXML
-    private CheckBox internationalButton;
+    private CheckBox internationalCheckBox;
 
     @FXML
     private TextField locationNameTextField;
@@ -64,9 +64,9 @@ public class BucketListController {
         scopeChoiceBox.getItems().add("Domestic");
         scopeChoiceBox.getItems().add("International");
         // set the filter check boxes to selected
-        citywideButton.setSelected(true);
-        domesticButton.setSelected(true);
-        internationalButton.setSelected(true);
+        citywideCheckBox.setSelected(true);
+        domesticCheckBox.setSelected(true);
+        internationalCheckBox.setSelected(true);
         // disable the POI controls until a location is created and selected
         newPOIField.setDisable(true);
         addPOIButton.setDisable(true);
@@ -185,9 +185,9 @@ public class BucketListController {
     @FXML
     void updateLocationsView() {
         // check which check boxes are selected
-        boolean c = citywideButton.isSelected();
-        boolean d = domesticButton.isSelected();
-        boolean i = internationalButton.isSelected();
+        boolean c = citywideCheckBox.isSelected();
+        boolean d = domesticCheckBox.isSelected();
+        boolean i = internationalCheckBox.isSelected();
         // clear current view
         locationsView.getItems().clear();
         // separate loops to show locations in order, sorted by scope
