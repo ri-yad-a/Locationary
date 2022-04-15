@@ -10,6 +10,14 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+/**
+ * CPSC 233 W22 Final submission
+ * Tutorial: T10
+ * Date: April 15, 2022
+ * Gaurav Ashar, Riyad Abdullayev
+ * A controller class for the bucketList-view fxml scene
+ */
+
 public class BucketListController {
 
     // FXML components

@@ -13,10 +13,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * CPSC 233 W22 Demo 3
+ * CPSC 233 W22 Final submission
  * Tutorial: T10
- * Date: April 01, 2022
+ * Date: April 15, 2022
  * Gaurav Ashar, Riyad Abdullayev
+ * The runner class, contains main method which launches Java FX program
  */
 
 public class Main extends Application {

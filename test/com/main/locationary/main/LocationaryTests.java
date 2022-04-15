@@ -13,9 +13,9 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * CPSC 233 W22 Demo 3
+ * CPSC 233 W22 Final submission
  * Tutorial: T10
- * Date: March 23, 2022
+ * Date: April 15, 2022
  * Gaurav Ashar, Riyad Abdullayev
  * This is a testing class for multiple classes
  */
