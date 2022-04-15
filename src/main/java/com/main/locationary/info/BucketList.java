@@ -3,9 +3,9 @@ package com.main.locationary.info;
 import java.util.ArrayList;
 
 /**
- * CPSC 233 W22 Demo 3
+ * CPSC 233 W22 Final submission
  * Tutorial: T10
- * Date: April 01, 2022
+ * Date: April 15, 2022
  * Gaurav Ashar, Riyad Abdullayev
  * This class handles Location objects that are present in the user's Bucket List.
  */
