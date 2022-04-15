@@ -26,20 +26,26 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        // set the main stage for the switch scene method
         mainStage = stage;
+        // load the main page
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        mainStage.setTitle("Locationary - Demo 3 Release");
+        // set controls and show stage
+        mainStage.setTitle("Locationary - Final release");
         mainStage.setScene(scene);
         mainStage.show();
     }
 
     public static void main(String[] args) {
-
+        // command line argument handle
         File f = null;
+        // if the length is 1 only
         if (args.length == 1) {
+            // search for file
             f = new File(args[0]);
             if (f.exists()) {
+                // if exists, get data from it
                 FileHandler.setFile(f);
                 Journal[] j1 = FileHandler.getFromFile();
                 HomeController.bucketList = (BucketList) j1[0];
@@ -47,6 +53,7 @@ public class Main extends Application {
             }
         }
         FileHandler.setFile(f);
+        // launch java fx components
         launch();
     }
 
@@ -56,11 +63,12 @@ public class Main extends Application {
      */
     public static void switchScreen(String filename) {
         try {
+            // check file
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(filename));
             Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            // set it as the scene of the main stage
             mainStage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
 
     }
