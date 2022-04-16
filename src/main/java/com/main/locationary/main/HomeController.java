@@ -88,19 +88,10 @@ public class HomeController {
             }
         }
 
-        // if visited has less than or equal to 5 locations
-        // then output all those locations to the visited view
-        ArrayList<Location> visitedLocations = visited.getLocations();
-        int vSize = visitedLocations.size();
-        if (vSize <= 5) {
-            // less than or equal to 5 locations, add them all
-            for (Location location: visitedLocations) {
-                visitedView.getItems().add(location);
-            }
-        } else {
-            // output the 5 most highly rated locations
-            Location[] top = visited.getTopFive();
-            for (int i = 0; i < top.length; i++){
+        // output the 5 most highly rated locations for visited view
+        Location[] top = visited.getTopFive();
+        for (int i = 0; i < top.length; i++){
+            if (top[i] != null) {
                 visitedView.getItems().add(top[i]);
             }
         }
