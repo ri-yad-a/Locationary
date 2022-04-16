@@ -35,6 +35,7 @@ public class Location implements Comparable, JournalInfo {
         }
     }
 
+
     public Location(Scope s, String n) {
         this.scope = s;
         this.name = n;
@@ -57,6 +58,9 @@ public class Location implements Comparable, JournalInfo {
         this.scope = scope;
     }
 
+    /**
+     * @param poi to add to the location
+     */
     public void addPOI(POI poi) {
          this.pois.add(poi);
     }
@@ -70,10 +74,20 @@ public class Location implements Comparable, JournalInfo {
         return null;
     }
 
+    /**
+     *
+     * @return ArrayList of Locations POI's
+     */
     public ArrayList<POI> getPOIs() {
         return this.pois;
     }
 
+
+    /**
+     * Checks if the location contains a specified POI
+     * @param name of POI to check for in location
+     * @return true if location has POI, false if it doesn't have POI
+     */
     public boolean hasPOI(String name) {
         for (POI poi: pois) {
             if (poi.getName().equals(name)) {
