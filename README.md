@@ -41,7 +41,7 @@ navigate to the location of the .jar file and run the
 following command:
 
 `java --module-path "javafx-sdk lib folder directory"
---add-modules javafx.controls,javafx.fxml -jar locationary.jar`
+--add-modules javafx.controls,javafx.fxml -jar Locationary.jar`
 
 To load in journal data from a file when running the program,
 you can use the name of the desired file as a command line argument.
@@ -54,7 +54,7 @@ you can run the same commands as above with an additional argument like the foll
 or
 
 `java --module-path "javafx-sdk lib folder directory"
---add-modules javafx.controls,javafx.fxml -jar locationary.jar data.csv`
+--add-modules javafx.controls,javafx.fxml -jar Locationary.jar data.csv`
 
 
 ## How to use the GUI
