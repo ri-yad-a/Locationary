@@ -10,9 +10,6 @@ also add ratings to previously travelled destinations.
 
 Authors: Riyad Abdullayev and Gaurav Ashar
 
-Date: April 15, 2022
-
-Tutorial T10
 
 
 
