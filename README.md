@@ -1,5 +1,4 @@
 # Locationary
-## CPSC 233 W22 - Final Project 
 
 ## General Information
 Locationary is an organized journal for traveller's to
