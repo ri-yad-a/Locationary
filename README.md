@@ -32,7 +32,7 @@ lib folder where you have downloaded your javafx sdk
 
 
 
-To run this program using the .jar file for this project, 
+To run this program using the existing .jar file in this repository, 
 navigate to the location of the .jar file and run the
 following command:
 
